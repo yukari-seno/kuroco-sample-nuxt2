@@ -1,0 +1,1 @@
+# kuroco-sample-nuxt2
