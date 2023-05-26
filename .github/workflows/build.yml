@@ -1,4 +1,4 @@
-name: Build and deploy to Kuroco front
+name: Build and deploy to Kuroco front for sample
 on:
   push:
     branches:
