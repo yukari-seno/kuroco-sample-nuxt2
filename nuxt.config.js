@@ -25,9 +25,11 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/css/hotel-style.css',
     '@/assets/css/style.css',
     '@/assets/css/plus_style.css',
     '@/assets/css/slick.css',
+    '@/assets/css/slick-carousels.css',
   ],
   
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

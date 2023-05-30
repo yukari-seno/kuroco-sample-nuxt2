@@ -40,28 +40,55 @@
               <div v-for="(slide, index) in response.details.main_img" :key="index" class="pagination" :class="{ active: page === index }" @click="pagination(index)" />
             </div>
           </div>
-          <div class="title pbNested pbNestedWrapper " id="pbBlock3560920">
-            <div class="pbBlock pbBlockBase">
-              <div>
-                <p>
-                  テーマ・目的別に宿を探す
-                </p>
-              </div>
+          <div class="searchbox page-sec clearlayout">
+            <search-module />
+          </div>
+          <div class="hotel-recently page-sec page-container hotel-sec" id="pbBlock3560920">
+            <div class="hotel-recently__head hotel-sec__head">
+              <p class="hotel-recently__title heading--underline hotel-sec__title"><span>テーマ・目的別に宿を探す</span></p>
             </div>
           </div>
-          <div class="plus-carousel pbNested pbNestedWrapper " id="pbBlock2649944">
-            <ul class="slick-initialized slick-slider">
-              <div aria-live="polite" class="slick-list draggable">
-                <div class="slick-track" role="listbox" style="opacity: 1; width: 1020px; transform: translate3d(0px, 0px, 0px);">
-                  <li v-for="(slide, index) in promotion.list" :key="index" class="slick-slide slick-current" tabindex="-1" style="width: 204px;">
-                    <a :href="slide.url" target="_new" tabindex="0">
-                      <img :src="slide.imageurl.url" :alt="slide.imageurl.desc">
-                      <h4><span class="text">{{ slide.caption }}</span></h4>
-                    </a>
-                  </li>
+
+          <div class="hotel-recently__body slider-wrap idling hotel-sec__body no-slider-progress">
+            <div class="hotel-recently__list hotel-sec-slider swiper swiper-container swiper-initialized
+            swiper-horizontal swiper-pointer-events swiper-free-mode swiper-backface-hidden is-ready"
+            data-slider-items="{'freeMode':true,'navigation':false,'pagination':false,'breakpoints':{'0':{'slidesPerView':1.175},'510':{'slidesPerView':1.7},'740':{'slidesPerView':2.4},'1025':{'slidesPerView':3.4}}}">
+              <div id="tvgRecentHotel" class="hotel-recently__items hotel-sec-slider__items swiper-wrapper slick-initialized slick-slider">
+                <div class="slick-list draggable">
+                  <div class="slick-track" style="opacity: 1; width: 278px; transform: translate3d(0px, 0px, 0px);">
+                    <div v-for="(slide, index) in promotion.list"
+                    :key="index"
+                    class="hotel-recently__item hotel-sec-slider__item swiper-slide slick-slide slick-current slick-active"
+                    data-slick-index="0"
+                    aria-hidden="false"
+                    tabindex="0"
+                    style="width: 263px;">
+                      <div class="hotelcard">
+                        <div class="hotel-card__view">
+                          <img :src="slide.imageurl.url" :alt="slide.imageurl.desc">
+                        </div>
+                        <div class="hotel-card__block">
+                          <div class="hotel-card__desc">
+                            <p class="hotel-card__title">
+                              <a :href="slide.url" :alt="slide.imageurl.desc" class="hotel-card__link" tabindex="0">{{ slide.caption }}</a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </ul>
+            </div>
+            <div class="swiper-ctrl">
+              <div class="swiper-button swiper-button-prev">
+              </div>
+              <div class="swiper-button swiper-button-next"></div>
+              <div class="swiper-pagination"></div>
+            </div>
+            <div class="slider-progress ready">
+              <span class="slider-progress__handle" style="width:100%;transform:translate3d(NaNpx,0,0);"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -93,6 +120,54 @@ export default {
       page: 0
     }
   },
+  head: {
+    script: [
+      {
+        src: '/js/jquery-3.5.1.min.js',
+        defer: true
+      },
+      {
+        src: '/js/slick.min.js',
+        defer: true
+      },
+      {
+        src: '/js/slick-carousels.js',
+        defer: true
+      },
+      {
+        src: '/js/custom/common.js',
+        defer: true
+      },
+      {
+        src: '/js/custom/top.js?mexesstest',
+        defer: true
+      },
+      {
+        src: '/js/custom/search-keyword.js',
+        defer: true
+      },
+      {
+        src: '/js/custom/search-area.js',
+        defer: true
+      },
+      {
+        src: '/js/custom/search-room-nums.js',
+        defer: true
+      },
+      {
+        src: '/js/custom/search-checkin-out.js',
+        defer: true
+      },
+      {
+        src: '/js/custom/search-tags.js',
+        defer: true
+      },
+      {
+        src: '/js/custom/panel-util.js',
+        defer: true
+      }
+    ]
+  },
   methods: {
     pagination(index) {
       this.page = index
@@ -102,6 +177,7 @@ export default {
 </script>
 
 <style scoped>
+
 .container {
   width: 100%;
   max-width: 980px;
@@ -112,6 +188,7 @@ export default {
   width: 100%;
 }
 
+/*
 .pagination-container {
   display: flex;
   justify-content: center;
@@ -138,4 +215,5 @@ export default {
   border-radius: 16px;
   background-color: #555;
 }
+*/
 </style>

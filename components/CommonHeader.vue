@@ -1,53 +1,48 @@
 <!-- Please remove this file from your project -->
 <template>
-  <div id="headerArea" class="pbHeaderArea">
-    <div id="area1" class="pbArea ">
-      <div class="pbNested ">
-        <div id="pbBlock2649954" class="pbNested pbNestedWrapper">
-          <div class="pbNested ">
-            <div id="pbBlock2376" class="pbNested pbNestedWrapper">
-              <div class="headerWrapper">
-                <div class="headerWrapper1">
-                  <h1>JTB、るるぶトラベルのクーポン、ふるさと納税宿泊クーポンならたびゲーター</h1>
-                  <!--p>たびゲーターは「JTB」、「ヤフー」、「ソフトバンクグループ」のグループ会社です</p-->
-                </div>
-                <div class="headerWrapper2">
-                  <tvg-logo />
-                  <nav>
-                    <ul>
-                      <li>
-                        <a href="/index.html">国内宿泊予約</a>
-                      </li>
-                      <li>
-                        <a href="/company.html">会社案内</a>
-                      </li>
-                      <li>
-                        <a href="/business.html">法人向けサービス</a>
-                      </li>
-                    </ul>
-                  </nav>
-                  <div class="menu">
-                    <ul>
-                      <li>
-                        <a href="/help#anchor04">予約確認・
-                          <br>変更・取消
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/help.html">ヘルプ・
-                          <br>チャットボット
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  <header class="header">
+    <div class="header__sticky" data-header-sticky="">
+      <div class="header__container">
+        <h1>国内旅行のホテル・旅館の宿泊予約サイト－たびゲーター</h1>
+        <p class="header-title">
+          <a href="/search/" class="header-title__link">
+            <tvg-logo />
+          </a>
+        </p>
+        <nav class="header-menu">
+          <ul class="header-menu__items">
+            <li class="header-menu__item header-menu__item--search_hotel">
+              <a href="/search/#searchbox" title="ホテル・旅館を探す" class="header-menu__link">ホテル・旅館を探す</a>
+            </li>
+            <li class="header-menu__item header-menu__item--search_area">
+              <a href="/search/area" title="エリアから探す" class="header-menu__link">エリアから探す</a>
+            </li>
+            <li class="header-menu__item header-menu__item--search_coupon">
+              <a href="/search/couponListTransfer" title="クーポンを探す" class="header-menu__link" target="_blank">クーポンを探す</a>
+            </li>
+            <li class="header-menu__item header-menu__item--news">
+              <a href="/search/informationlist?partner=htl&amp;informationtype=S&amp;page=1" title="お知らせ" class="header-menu__link">お知らせ</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header-action">
+          <ul class="header-action__items">
+            <li class="header-action__item header-action__item--faq">
+              <a href="https://www.tavigator.co.jp/help/yoyaku_index" title="ヘルプ" class="header-action__link" target="_blank">ヘルプ</a>
+            </li>
+            <li class="header-action__item header-action__item--favorite">
+              <a href="/search/favoritelist" title="お気に入り" class="header-action__link">お気に入り</a>
+            </li>
+            <li class="header-action__item header-action__item--reserve">
+              <a href="/search/reservelist" title="予約確認・取り消し" class="header-action__link">
+                予約確認<span class="only--pc">・取り消し</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -61,14 +56,16 @@ export default {
 </script>
 
 <style>
+/*
 .headerWrapper2 nav ul li:nth-of-type(1) a {
-	color: #008742;
-	border-bottom: 2px solid #008742;
+  color: #008742;
+  border-bottom: 2px solid #008742;
 }
 .headerWrapper {
-	margin: 0 0 10px;
+  margin: 0 0 10px;
 }
 #area0 > div > div {
-    width: 100%;
+  width: 100%;
 }
+*/
 </style>
