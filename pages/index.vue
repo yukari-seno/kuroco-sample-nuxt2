@@ -1,6 +1,7 @@
 <template>
   <div>
     <common-header />
+    <hamburger-menu />
     <div id="mainArea" class="pbMainArea business">
       <div id="area0" class="pbArea ">
         <div class="pbNested ">
@@ -95,6 +96,7 @@
 <script>
 import axios from 'axios'
 import CommonHeader from '~/components/CommonHeader'
+import HamburgerMenu from '~/components/HamburgerMenu'
 import CommonFooter from '~/components/CommonFooter'
 import SearchModule from '~/components/SearchModule'
 import Carousels from '~/components/Carousels'
