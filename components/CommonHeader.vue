@@ -4,11 +4,7 @@
     <div class="header__sticky" data-header-sticky="">
       <div class="header__container">
         <h1>国内旅行のホテル・旅館の宿泊予約サイト－たびゲーター</h1>
-        <p class="header-title">
-          <a href="/search/" class="header-title__link">
-            <tvg-logo />
-          </a>
-        </p>
+        <tvg-logo />
         <nav class="header-menu">
           <ul class="header-menu__items">
             <li class="header-menu__item header-menu__item--search_hotel">

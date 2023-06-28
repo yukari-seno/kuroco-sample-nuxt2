@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# kuroco-sample-nuxt2
-=======
 # kuroco-sample-nuxt2
 
 ## Build Setup

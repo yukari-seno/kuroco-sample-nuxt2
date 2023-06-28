@@ -1,0 +1,86 @@
+const AREA_EN_NAME = {
+  '01': 'hokkaido',
+  '02': 'aomori',
+  '03': 'iwate',
+  '04': 'miyagi',
+  '05': 'akita',
+  '06': 'yamagata',
+  '07': 'fukushima',
+  '08': 'ibaraki',
+  '09': 'tochigi',
+  '10': 'gunma',
+  '11': 'saitama',
+  '12': 'chiba',
+  '13': 'tokyo',
+  '14': 'kanagawa',
+  '15': 'niigata',
+  '16': 'toyama',
+  '17': 'ishikawa',
+  '18': 'fukui',
+  '19': 'yamanashi',
+  '20': 'nagano',
+  '21': 'gifu',
+  '22': 'shizuoka',
+  '23': 'aichi',
+  '24': 'mie',
+  '25': 'shiga',
+  '26': 'kyoto',
+  '27': 'osaka',
+  '28': 'hyogo',
+  '29': 'nara',
+  '30': 'wakayama',
+  '31': 'tottori',
+  '32': 'shimane',
+  '33': 'okayama',
+  '34': 'hiroshima',
+  '35': 'yamaguchi',
+  '36': 'tokushima',
+  '37': 'kagawa',
+  '38': 'ehime',
+  '39': 'kochi',
+  '40': 'fukuoka',
+  '41': 'saga',
+  '42': 'nagasaki',
+  '43': 'kumamoto',
+  '44': 'oita',
+  '45': 'miyazaki',
+  '46': 'kagoshima',
+  '47': 'okinawa'
+}
+
+const AREA_TAB_NAME = {
+  '01': 'hokkaido-tohoku',
+  '02': 'north-kanto',
+  '03': 'capital-area',
+  '04': 'koushinetsu',
+  '05': 'hokuriku',
+  '06': 'tokai',
+  '07': 'kinki',
+  '08': 'chugoku',
+  '09': 'shikoku',
+  '10': 'kyushu-okinawa',
+}
+
+const POPULAR_NAME = {
+  '1': { code: 'su1301', name: 'お台場・銀座' },
+  '2': { code: 'ms260101', name: '京都駅周辺' },
+  '3': { code: 'ms270101', name: '梅田' },
+  '4': { code: 'su2205', name: '南伊豆' },
+  '5': { code: 'su2203', name: '熱海' },
+  '6': { code: 'su1406', name: '箱根' },
+  '7': { code: 'su0101', name: '札幌' },
+  '8': { code: 'ms040102', name: '仙台' },
+  '9': { code: 'ms140101', name: '横浜' },
+  '10': { code: 'su2301', name: '名古屋' },
+  '11': { code: 'ms280101', name: '神戸' },
+  '12': { code: 'ms400101', name: '福岡' },
+  '13': { code: 'su4701', name: '沖縄' },
+  '14': { code: 'ms120105', name: '東京ディズニーリゾート（R）' },
+  '15': { code: 'ms270205', name: 'ユニバーサル・スタジオ・ジャパン' }
+}
+
+export default (context, inject) => {
+  inject('AREA_EN_NAME', AREA_EN_NAME)
+  inject('AREA_TAB_NAME', AREA_TAB_NAME)
+  inject('POPULAR_NAME', POPULAR_NAME)
+}

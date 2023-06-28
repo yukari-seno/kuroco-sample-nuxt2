@@ -5,10 +5,6 @@ window.onload = function(){
         let defaultAreaCode = document.getElementById('area_13');
         defaultAreaCode.checked = true;
         document.querySelector('[data-panel-toggle="srh-area"]').setAttribute("value", "東京都")
-    } else {
-        // パラメータの値のチェックボックスにチェックを入れる
-        let select_check =  document.getElementById('hid_area_select').value;
-        document.getElementById(select_check).checked = true;
     }
 }
 

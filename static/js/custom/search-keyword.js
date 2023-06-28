@@ -1,15 +1,22 @@
-// ロードイベント
-
-window.onload = function(){ 
-    if (document.getElementById('srh-param-keyword').value != "") {
-        document.getElementById('srh-param-keyword').textContent = document.getElementById('srh-param-keyword').value
-    }
-    
-    $('.shisetsu-radio-input').on('click', function () {
-        $("#srh-param-keyword").attr('placeholder', '宿泊施設名を入力');
-    });
-
-    $('.plan-radio-input').on('click', function () {
-        $("#srh-param-keyword").attr('placeholder', 'プラン名を入力');
-    });
-}
+// export default {
+//     data() {
+//         return {
+//             keyword: 'skeyword',
+//             placeholder: '宿泊施設名を入力',
+//             skeyword: 'skeyword',
+//             pkeyword: 'pkeyword',
+//             skeyPlholder: '宿泊施設名を入力',
+//             pkeyPlholder: 'プラン名を入力'
+//         }
+//     },
+//     methods: {
+//         skeywordClick() {
+//             this.keyword = this.skeyword
+//             this.placeholder = this.skeyPlholder
+//         },
+//         pkeywordClick() {
+//             this.keyword = this.pkeyword
+//             this.placeholder = this.pkeyPlholder
+//         }
+//     }
+// }
