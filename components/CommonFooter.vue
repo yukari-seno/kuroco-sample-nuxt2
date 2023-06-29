@@ -1,161 +1,88 @@
-<!-- Please remove this file from your project -->
 <template>
-  <div id="footerArea" class="pbFooterArea">
-    <div id="area4" class="pbArea">
-      <div class="pbNested">
-        <div id="pbBlock95836" class="pbNested pbNestedWrapper">
-          <div class="pbNested">
-            <div id="pbBlock95834" class="pbNested pbNestedWrapper">
-              <div class="pageTop" style="display: block; position: absolute; bottom: 632px;">
-                <div class="inner">
-                  <img src="~/assets/images/ft_top.png" alt="TOP" title="TOP">
-                </div>
-              </div>
-            </div>
-          </div>
+  <footer class="footer"> <!-- TODO href,target未確定 -->
+    <div class="pagetop" data-pagetop data-pagetop-custom=".footer"><a href="#top"
+         title="このページの先頭へ"
+         class="pagetop__link"><span>このページの先頭へ</span></a></div>
+    <div class="ft-contents-wrap">
+      <div class="ft-contents pc-only">
+        <div class="ft-content">
+          <p>たびゲーター人気コンテンツ</p>
+          <ul>
+            <li><a href="https://travel.yahoo.co.jp/promo/coupon/list/tvg" target="_blank">お得なクーポン</a></li>
+            <li><a href="https://www.tavigator.co.jp/plus/bargain">バーゲン宿泊プラン</a></li>
+            <li><a href="https://www.tavigator.co.jp/plus/roten">露天風呂付き客室</a></li>
+            <li><a href="https://www.tavigator.co.jp/plus/asoberu">一日中遊べる宿</a></li>
+            <li><a href="https://www.tavigator.co.jp/plus/disney">東京ディズニーリゾート（R）</a></li>
+            <li><a href="https://travel.yahoo.co.jp/special/wh_list/" target="_blank">テーマ、目的別&emsp;旅のおすすめ特集</a></li>
+          </ul>
         </div>
-        <div id="pbBlock2413" class="pbNested pbNestedWrapper">
-          <div class="pbNested">
-            <div id="pbBlock2406" class="pbNested pbNestedWrapper">
-              <div class="footerWrapper1">
-                <div class="footerInner">
-                  <div class="title">
-                    INDEX
-                  </div>
-                  <div class="box">
-                    <dl>
-                      <dt>たびゲーター人気コンテンツ</dt>
-                      <dd>
-                        <a href="https://travel.yahoo.co.jp/promo/coupon/list/tvg" target="new">お得なクーポン</a>
-                      </dd>
-                      <dd>
-                        <a href="/plus/bargain">バーゲン宿泊プラン</a>
-                      </dd>
-                      <dd>
-                        <a href="/plus/roten">露天風呂付き客室</a>
-                      </dd>
-                      <dd>
-                        <a href="/plus/asoberu">一日中遊べる宿</a>
-                      </dd>
-                      <dd>
-                        <a href="/plus/disney">東京ディズニーリゾート（R）</a>
-                      </dd>
-                      <dd>
-                        <a href="https://travel.yahoo.co.jp/special/wh_list/" target="new">テーマ、目的別 旅のおすすめ特集</a>
-                      </dd>
-                    </dl>
-                  </div>
-                  <div class="box">
-                    <dl>
-                      <dt>たびゲーターサービス</dt>
-                      <dd>
-                        <a href="/furusato.html">ふるさと納税</a>
-                      </dd>
-                      <dd>
-                        <a href="/plus/">Myたびプラス</a>
-                      </dd>
-                      <dd>
-                        <a href="/line/">公式LINE</a>
-                      </dd>
-                      <dd>
-                        <a href="https://app.tavigator.co.jp/magazine/register" target="new">お得なメールマガジン</a>
-                      </dd>
-                      <!--dd>
-                        <a href="https://travel.yahoo.co.jp/promo/stamp/promotion/index.html" target="new">Myたびスタンプ</a>
-                      </dd-->
-                      <dd>
-                        <a href="/business.html">法人向けサービス</a>
-                      </dd>
-                    </dl>
-                  </div>
-                  <div class="box">
-                    <dl>
-                      <dt>サポート</dt>
-                      <dd>
-                        <a href="/help.html">ヘルプ・チャットボット</a>
-                      </dd>
-                      <dd>
-                        <a href="/help/user_env/pc.html">推奨環境</a>
-                      </dd>
-                    </dl>
-                    <dl>
-                      <dt>たびゲーターについて</dt>
-                      <dd>
-                        <a href="/company.html">会社案内</a>
-                      </dd>
-                      <!--dd>
-                        <a href="/recruit.html">採用情報</a>
-                      </dd-->
-                    </dl>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="pbBlock2408" class="pbNested pbNestedWrapper">
-              <div class="footerWrapper2">
-                <div class="footerInner">
-                  <div class="text">
-                    たびゲーターは「JTB」、「Zホールディングス」、「ソフトバンクグループ」のグループ会社です。 <br>
-                    （ヤフー（株）はZホールディングス（株）に商号変更し、持株会社になりました）
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="pbBlock1993146" class="pbNested pbNestedWrapper">
-              <div class="footerWrapper2">
-                <div class="footerInner">
-                  <div class="image">
-                    <img src="~/assets/images/ft_image.jpg" alt="たびゲーターはISMS（情報セキュリティマネジメントシステム）の国際規格「ISO/IEC 27001:2013」と国内規格「JIS Q 27001:2014」の認証を取得しています。" title="たびゲーターはISMS（情報セキュリティマネジメントシステム）の国際規格「ISO/IEC 27001:2013」と国内規格「JIS Q 27001:2014」の認証を取得しています。">
-                  </div>
-                  <div class="text">
-                    たびゲーターはISMS（情報セキュリティマネジメントシステム）の国際規格「ISO/IEC 27001:2013」と
-                    <br>国内規格「JIS Q 27001:2014」の認証を取得しています。
-                    <a href="/policy/isms.html">詳しくはこちら</a>
-                  </div>
-                </div>
-              </div>
-              <div class="footerWrapper3">
-                <ul>
-                  <li>
-                    <a href="/">トップページ</a>
-                  </li>
-                  <li>
-                    <a href="/company.html">会社案内</a>
-                  </li>
-                  <li>
-                    <a href="/company/charter.html">企業行動憲章</a>
-                  </li>
-                  <li>
-                    <a href="/policy/privacy.html">プライバシーポリシー</a>
-                  </li>
-                  <li>
-                    <a href="/condition/index.html">標識、約款</a>
-                  </li>
-                  <li>
-                    <a href="/condition/joken/index.html">旅行条件書、利用規約</a>
-                  </li>
-                  <li>
-                    <a href="/koukoku.html">決算公告</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div class="ft-content">
+          <p>たびゲーターサービス</p>
+          <ul>
+            <li><a href="https://www.tavigator.co.jp/web/furusato">ふるさと納税</a></li>
+            <li><a href="https://www.tavigator.co.jp/plus">Myたびプラス</a></li>
+            <li><a href="https://www.tavigator.co.jp/web/line">公式LINE</a></li>
+            <li><a href="https://app.tavigator.co.jp/magazine/register" target="_blank">お得なメールマガジン</a></li>
+            <li><a href="https://www.tavigator.co.jp/business.html">法人向けサービス</a></li>
+          </ul>
         </div>
-        <div id="pbBlock2381" class="pbNested pbNestedWrapper">
-          <div class="pbNested">
-            <div id="pbBlock2380" class="copyright pbNested pbNestedWrapper">
-              <div class="pbBlock pbBlockBase">
-                <p>
-                  Copyright (C) 2023 Tavigator, Inc. All Rights Reserved.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div class="ft-content">
+          <p>サポート</p>
+          <ul>
+            <li><a href="https://www.tavigator.co.jp/web/help">ヘルプ・チャットボット</a></li>
+            <li><a href="https://www.tavigator.co.jp/help/user_env/pc.html">推奨環境</a></li>
+          </ul>
+        </div>
+        <div class="ft-content">
+          <p>たびゲーターについて</p>
+          <ul>
+            <li><a href="https://www.tavigator.co.jp/company.html">会社案内</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ft-secondary">
+        <p>たびゲーターは「JTB」、「Zホールディングス」、「ソフトバンクグループ」のグループ会社です。<br>（ヤフー（株）はZホールディングス（株）に商号変更し、持株会社になりました）</p>
+      </div>
+      <div class="ft-secondary">
+        <img src="~/assets/images/ft_image.jpg" width="150" height="98" alt="dummy">
+        <div class="ft-secondary-text">
+          <p>たびゲーターはISMS（情報セキュリティマネジメントシステム）の国際規格「ISO/IEC 27001:2013」と<br>国内規格「JIS Q 27001:2014」の認証を取得しています。</p>
+          <div class="btn--more pc-only"><a href="https://www.tavigator.co.jp/policy/isms.html">詳しくはこちら</a></div>
+          <div class="view-more hotel-sec__more sp-only"><a
+              href="https://www.tavigator.co.jp/policy/isms.html">詳しくはこちら</a></div>
         </div>
       </div>
     </div>
-  </div>
+    <nav class="footer-menu">
+      <ul class="footer-menu__items">
+        <li class="footer-menu__item footer-menu__item--company"><a href="https://www.tavigator.co.jp"
+            title="トップページ"
+            class="footer-menu__link">トップページ</a></li>
+        <li class="footer-menu__item footer-menu__item--privacy"><a href="https://www.tavigator.co.jp/company.html"
+            title="会社案内"
+            class="footer-menu__link">会社案内</a></li>
+        <li class="footer-menu__item footer-menu__item--agreement"><a
+            href="https://www.tavigator.co.jp/company/charter.html"
+            title="企業行動憲章"
+            class="footer-menu__link">企業行動憲章</a>
+        </li>
+        <li class="footer-menu__item footer-menu__item--terms"><a href="https://www.tavigator.co.jp/policy/privacy.html"
+            title="プライバシーポリシー"
+            class="footer-menu__link">プライバシーポリシー</a></li>
+        <li class="footer-menu__item footer-menu__item--terms"><a href="https://www.tavigator.co.jp/condition"
+            title="標識・約款"
+            class="footer-menu__link">標識・約款</a></li>
+        <li class="footer-menu__item footer-menu__item--terms"><a href="https://www.tavigator.co.jp/condition/joken"
+            title="旅行条件書・利用規約"
+            class="footer-menu__link">旅行条件書・利用規約</a></li>
+        <li class="footer-menu__item footer-menu__item--terms"><a href="https://www.tavigator.co.jp/koukoku.html"
+            title="決算公告"
+            class="footer-menu__link">決算公告</a></li>
+      </ul>
+      <p class="footer-copyright"><small class="footer-copyright__txt">Copyright &copy; 2023 Tavigator, Inc. All Rights
+          Reserved.</small></p>
+    </nav>
+  </footer>
 </template>
 
 <script>
@@ -163,7 +90,3 @@ export default {
   name: 'CommonFooter'
 }
 </script>
-
-<style>
-
-</style>
