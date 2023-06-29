@@ -4,19 +4,23 @@
     <div id="mainArea" class="pbMainArea business">
       <div id="area0" class="pbArea ">
         <div class="pbNested ">
-          <div class="container">
-            <ssr-carousel
-              :slides-per-page="1"
-              :center="true"
-              :peek="50"
-              loop
-              show-dots
-              show-arrows
-            >
-              <div v-for="(slide, index) in topBanner.details.img" :key="index" :index="index + 1">
-                <img class="slide-image" :name="slide.desc" :src="slide.url">
-              </div>
-            </ssr-carousel>
+          <div class="mv-container">
+            <ul class="slide">
+              <ssr-carousel
+                :slides-per-page="1"
+                :center="true"
+                :peek="50"
+                loop
+                :show-dots="topBanner.pageInfo.totalCnt > 1 ? true : false"
+                show-arrows
+              >
+                <li v-for="(slide, index) in topBanner.list" :key="index" :index="index + 1">
+                  <a :href="slide.url" :target="slide.transitionDev.key === '1' ? '_self' : '_blank'">
+                    <img class="slide-image" :alt="slide.img.desc" :src="slide.img.url">
+                  </a>
+                </li>
+              </ssr-carousel>
+            </ul>
           </div>
           <!-- 検索モジュール -->
           <search-module :area="area.Data" />
@@ -61,15 +65,15 @@
             </div>
           </div>
           <!-- その他リンク ここから -->
-          <div class="online-insurance__container">
+          <div v-if="otherLink.pageInfo.totalCnt != 0" class="online-insurance__container">
             <div class="title">
-              <h2 class="marker-under">{{ otherLink.details.title }}</h2>
-              <div class="btn--more pc-only"><a href="https://www.tavigator.co.jp/insurance/policy.html">{{ otherLink.details.listTitle }}</a></div>
+              <h2 class="marker-under">{{ otherLink.list.contents_type_ext_col_01 }}</h2>
+              <div class="btn--more pc-only"><a href="https://www.tavigator.co.jp/insurance/policy.html">{{ otherLink.list.contents_type_ext_col_02 }}</a></div>
             </div>
             <ul>
-              <li v-for="(other, index) in otherLink.details.linkURL" :key="index">
-                <a :href="other">
-                  {{ otherLink.details.linkTitle[index] }}
+              <li v-for="(link, index) in otherLink.list" :key="index">
+                <a :href="link.url" :target="link.transitionDev.key === '1' ? '_self' : '_blank'">
+                  {{ link.name }}
                 </a>
               </li>
             </ul>
@@ -88,7 +92,7 @@
         </div>
       </div>
     </div>
-    <common-footer :footerLink="footerLink"/>
+    <common-footer/>
   </div>
 </template>
 
@@ -110,6 +114,9 @@ const tvgApi = axios.create({
 async function getShisetsuImg(data) {
   const shisetsuDetailUrl = process.env.SHISETSU_DETAIL_API
   return await tvgApi.get(shisetsuDetailUrl, { params: { shisetsu: data } }).then((shisetsuData) => {
+    if (!shisetsuData.data.Data.Hotel.ShisetsuImage) {
+      return '/assets/images/noimage.jpg'
+    }
     return shisetsuData.data.Data.Hotel.ShisetsuImage
   }).catch((err) => {
     console.log(err.message)
@@ -125,39 +132,33 @@ export default {
   },
   async asyncData ({ $axios }) {
     const areaMasterUrl = process.env.AREA_MASTER_API
-    const [topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, footerBanner, footerLink, area] = await Promise.all([
+    const [topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, area] = await Promise.all([
       // トップバナー取得
-      $axios.$get('/rcms-api/5/topBanner/12'),
+      $axios.$get('/rcms-api/5/banner'),
       // テーマ・目的別に宿を探すリスト
-      $axios.$get('/rcms-api/5/theme/15').then(async (data) => {
-        const shisetsuImgList = []
-        for (const element of data.details.shisetsu) {
-          if (element) {
+      $axios.$get('/rcms-api/5/theme').then(async (data) => {
+        let cnt = 0
+        for (const element of data.list) {
+          if (element.shisetsu !== '') {
             // TVG施設詳細API
-            shisetsuImgList.push(await getShisetsuImg(element).then((data) => {
+            data.list[cnt].shisetsuImage = await getShisetsuImg(element.shisetsu).then((data) => {
               return data
-            }))
-          } else {
-            shisetsuImgList.push('')
+            })
           }
+          cnt++
         }
-        data.details.shisetsuImage = shisetsuImgList
         return data
       }),
       // おすすめ観光ガイド取得
-      $axios.$get('/rcms-api/5/sightseeing/20'),
+      $axios.$get('/rcms-api/5/sightseeing'),
       // 広告PR取得
-      $axios.$get('/rcms-api/5/advertisement/21'),
+      $axios.$get('/rcms-api/5/advertisement'),
       // クーポン取得
-      $axios.$get('/rcms-api/5/coupon/22'),
+      $axios.$get('/rcms-api/5/coupon'),
       // 都道府県から探す取得
       $axios.$get('/rcms-api/5/prefecture'),
       // その他リンク取得
-      $axios.$get('/rcms-api/5/otherLink/18'),
-      // フッターバナー取得
-      $axios.$get('/rcms-api/5/footerBanner/17'),
-      // フッターリンク取得
-      $axios.$get('/rcms-api/5/footerLink'),
+      $axios.$get('/rcms-api/5/otherLink'),
       // TVGエリアマスタ情報API
       tvgApi.get(areaMasterUrl).then((area) => {
         return area.data
@@ -166,7 +167,7 @@ export default {
       })
     ])
 
-    return { topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, footerLink, footerBanner, area }
+    return { topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, area }
   },
   data() {
     return {
@@ -178,14 +179,6 @@ export default {
   },
   head: {
     script: [
-      {
-        src: '/js/jquery-3.5.1.min.js',
-        defer: true
-      },
-      {
-        src: '/js/custom/common.js',
-        defer: true
-      },
       {
         src: '/js/custom/top.js',
         defer: true
@@ -204,10 +197,6 @@ export default {
       },
       {
         src: '/js/custom/search-tags.js',
-        defer: true
-      },
-      {
-        src: '/js/custom/panel-util.js',
         defer: true
       }
     ]

@@ -30,6 +30,4 @@ document.getElementById('search_submit').addEventListener('click', function(e){
         document.getElementById('area_error').classList.remove('none');
         e.preventDefault();
     }
-
-    setSearchHistory();
 });

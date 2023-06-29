@@ -18,11 +18,11 @@
                     <div class="form-label">
                       <label for="srh-param-keyword" class="form-label">キーワード</label>
                       <label class="form-radio ">
-                        <input type="radio" class="form-radio-input plan-radio-input" @click="skeywordClick" v-model="keyword" value="skeyword"/>
+                        <input type="radio" class="form-radio-input plan-radio-input" v-model="keyword" value="skeyword"/>
                         <span class="form-radio-label">施設</span>
                       </label>
                       <label class="form-radio">
-                        <input type="radio" class="form-radio-input plan-radio-input" @click="pkeywordClick" v-model="keyword" value="pkeyword"/>
+                        <input type="radio" class="form-radio-input plan-radio-input" v-model="keyword" value="pkeyword"/>
                         <span class="form-radio-label">プラン</span>
                       </label>
                     </div>
@@ -206,234 +206,241 @@
                       <span class="form-checkbox-label">日付・人数を指定しない</span>
                     </label>
                   </div>
-                  <div class="srh-param__col srh-param__col--meal">
-                    <span class="form-label">食事タイプ</span>
-                    <ul class="form-checkbox__items">
-                      <li class="form-checkbox__item">
-                        <label class="form-checkbox">
-                          <input id="meal_1" type="checkbox" class="form-checkbox-input" name="meal[]" value="1">
-                          <span class="form-checkbox-label">夕食/朝食付き</span>
-                        </label>
-                      </li>
-                      <li class="form-checkbox__item">
-                        <label class="form-checkbox">
-                          <input id="meal_2" type="checkbox" class="form-checkbox-input" name="meal[]" value="2">
-                          <span class="form-checkbox-label">朝食のみ</span>
-                        </label>
-                      </li>
-                      <li class="form-checkbox__item">
-                        <label class="form-checkbox">
-                          <input id="meal_3" type="checkbox" class="form-checkbox-input" name="meal[]" value="3">
-                          <span class="form-checkbox-label">夕食のみ</span>
-                        </label>
-                      </li>
-                        <li class="form-checkbox__item">
-                          <label class="form-checkbox">
-                            <input id="meal_4" type="checkbox" class="form-checkbox-input" name="meal[]" value="4">
-                            <span class="form-checkbox-label">食事なし</span>
-                        </label>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="srh-param__col srh-param__col--tags">
-                    <span class="form-label">こだわり条件</span>
-                    <div class="srh-param__col--popular">
-                      <span class="form-label">人気のこだわり</span>
-                      <ul class="form-checkbox__items">
-                        <li class="form-checkbox__item">
-                          <label class="form-checkbox">
-                            <input id="rb8" type="checkbox" class="form-checkbox-input">
-                            <span class="form-checkbox-label">禁煙ルーム</span>
-                          </label>
-                        </li>
-                        <li class="form-checkbox__item">
-                          <label class="form-checkbox">
-                            <input id="TB" type="checkbox" class="form-checkbox-input"> <span class="form-checkbox-label">ツイン</span>
-                          </label>
-                        </li>
-                        <li class="form-checkbox__item">
-                          <label class="form-checkbox">
-                            <input id="JP" type="checkbox" class="form-checkbox-input"> <span class="form-checkbox-label">和室</span>
-                          </label>
-                        </li>
-                        <li class="form-checkbox__item">
-                          <label class="form-checkbox">
-                            <input id="JW" type="checkbox" class="form-checkbox-input"> <span class="form-checkbox-label">和洋室</span>
-                          </label>
-                        </li>
-                        <li class="form-checkbox__item">
-                          <label class="form-checkbox">
-                            <input id="bb1" type="checkbox" class="form-checkbox-input"> <span class="form-checkbox-label">大浴場あり</span>
-                          </label>
-                        </li>
-                        <li class="form-checkbox__item">
-                          <label class="form-checkbox">
-                            <input id="bb14" type="checkbox" class="form-checkbox-input"> <span class="form-checkbox-label">温泉（鉱泉含む）あり</span>
-                          </label>
-                        </li>
-                        <li class="form-checkbox__item">
-                          <label class="form-checkbox">
-                            <input id="rb5" type="checkbox" class="form-checkbox-input"> <span class="form-checkbox-label">露天風呂付客室</span>
-                          </label>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="form-tags__list">
-                      <ul class="form-tags__items">
-                        <li class="form-tags__add"><button type="button" class="tag__add-btn" data-panel-toggle="srh-detail">こだわりを追加</button>
-                          <div class="panel panel--srh-detail" data-panel="srh-detail">
-                            <div class="panel-wrap">
-                              <div class="panel-dialog">
-                                <div class="panel-block">
-                                  <div class="panel-ctrl"><button type="button" class="panel-close" data-panel-close="srh-detail">×</button></div>
-                                  <div class="panel-content srh-param-detail">
-                                    <div class="panel-header"></div>
-                                    <div class="panel-body">
-                                      <div class="panel-body__inner">
-                                        <dl class="srh-param-detail-group"> <dt class="srh-param-detail-group__head form-label">部屋タイプ</dt>
-                                          <dd class="srh-param-detail-group__body">
-                                            <ul class="srh-param-detail-group__items">
-                                              <li id="SB" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="SB"> <span class="form-checkbox-label">シングル</span></label></li>
-                                              <li id="TB" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="TB"> <span class="form-checkbox-label">ツイン</span></label></li>
-                                              <li id="TR" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="TR"> <span class="form-checkbox-label">トリプル</span></label></li>
-                                              <li id="4B" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="4B"> <span class="form-checkbox-label">4ベッド</span></label></li>
-                                              <li id="DB" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="DB"> <span class="form-checkbox-label">ダブル</span></label></li>
-                                              <li id="SUSW" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="SUSW"> <span class="form-checkbox-label">スイート</span></label></li>
-                                              <li id="JP" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="JP"> <span class="form-checkbox-label">和室</span></label></li>
-                                              <li id="JW" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="JW"> <span class="form-checkbox-label">和洋室</span></label></li>
-                                              <li id="CT" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="CT"> <span class="form-checkbox-label">コテージ</span></label></li>
-                                              <li id="SP" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="SP"> <span class="form-checkbox-label">特別室</span></label></li>
-                                              <li id="RT" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="RT"> <span class="form-checkbox-label">貸別荘</span></label></li>
-                                              <li id="WT" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="WT"> <span class="form-checkbox-label">洋室</span></label></li>
-                                              <li id="MZ" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="MZ"> <span class="form-checkbox-label">メゾネット</span></label></li>
-                                              <li id="SH" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="SH"> <span class="form-checkbox-label">相部屋</span></label></li>
-                                              <li id="OTMT" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="OTMT"> <span class="form-checkbox-label">その他</span></label></li>
+                  <div class="srh-param__col select-choice"><p>条件を選択する</p><i class="fa-solid fa-angle-down"></i></div>
+                  <div class="srh-param__col select-choice-wrap">
+                    <div class="select-choice-container">
+                      <div class="srh-param__col srh-param__col--meal">
+                        <span class="form-label">食事タイプ</span>
+                        <ul class="form-checkbox__items">
+                          <li class="form-checkbox__item">
+                            <label class="form-checkbox">
+                              <input id="meal_1" type="checkbox" class="form-checkbox-input" name="meal[]" value="1">
+                              <span class="form-checkbox-label">夕食/朝食付き</span>
+                            </label>
+                          </li>
+                          <li class="form-checkbox__item">
+                            <label class="form-checkbox">
+                              <input id="meal_2" type="checkbox" class="form-checkbox-input" name="meal[]" value="2">
+                              <span class="form-checkbox-label">朝食のみ</span>
+                            </label>
+                          </li>
+                          <li class="form-checkbox__item">
+                            <label class="form-checkbox">
+                              <input id="meal_3" type="checkbox" class="form-checkbox-input" name="meal[]" value="3">
+                              <span class="form-checkbox-label">夕食のみ</span>
+                            </label>
+                          </li>
+                          <li class="form-checkbox__item">
+                            <label class="form-checkbox">
+                              <input id="meal_4" type="checkbox" class="form-checkbox-input" name="meal[]" value="4">
+                              <span class="form-checkbox-label">食事なし</span>
+                            </label>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="srh-param__col srh-param__col--tags">
+                        <span class="form-label">こだわり条件</span>
+                        <div class="srh-param__col--popular">
+                          <span class="form-label">人気のこだわり</span>
+                          <ul class="form-checkbox__items">
+                            <li class="form-checkbox__item">
+                              <label class="form-checkbox">
+                                <input id="rb8" type="checkbox" class="form-checkbox-input">
+                                <span class="form-checkbox-label">禁煙ルーム</span>
+                              </label>
+                            </li>
+                            <li class="form-checkbox__item">
+                              <label class="form-checkbox">
+                                <input id="TB" type="checkbox" class="form-checkbox-input"> <span class="form-checkbox-label">ツイン</span>
+                              </label>
+                            </li>
+                            <li class="form-checkbox__item">
+                              <label class="form-checkbox">
+                                <input id="JP" type="checkbox" class="form-checkbox-input"> <span class="form-checkbox-label">和室</span>
+                              </label>
+                            </li>
+                            <li class="form-checkbox__item">
+                              <label class="form-checkbox">
+                                <input id="JW" type="checkbox" class="form-checkbox-input"> <span class="form-checkbox-label">和洋室</span>
+                              </label>
+                            </li>
+                            <li class="form-checkbox__item">
+                              <label class="form-checkbox">
+                                <input id="bb1" type="checkbox" class="form-checkbox-input"> <span class="form-checkbox-label">大浴場あり</span>
+                              </label>
+                            </li>
+                            <li class="form-checkbox__item">
+                              <label class="form-checkbox">
+                                <input id="bb14" type="checkbox" class="form-checkbox-input"> <span class="form-checkbox-label">温泉（鉱泉含む）あり</span>
+                              </label>
+                            </li>
+                            <li class="form-checkbox__item">
+                              <label class="form-checkbox">
+                                <input id="rb5" type="checkbox" class="form-checkbox-input"> <span class="form-checkbox-label">露天風呂付客室</span>
+                              </label>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="form-tags__list">
+                          <ul class="form-tags__items">
+                            <li class="form-tags__add"><button type="button" class="tag__add-btn" data-panel-toggle="srh-detail">こだわりを追加</button>
+                              <div class="panel panel--srh-detail" data-panel="srh-detail">
+                                <div class="panel-wrap">
+                                  <div class="panel-dialog">
+                                    <div class="panel-block">
+                                      <div class="panel-ctrl"><button type="button" class="panel-close" data-panel-close="srh-detail">×</button></div>
+                                      <div class="panel-content srh-param-detail">
+                                        <div class="panel-header"></div>
+                                        <div class="panel-body">
+                                          <div class="panel-body__inner">
+                                            <dl class="srh-param-detail-group"> <dt class="srh-param-detail-group__head form-label">部屋タイプ</dt>
+                                              <dd class="srh-param-detail-group__body">
+                                                <ul class="srh-param-detail-group__items">
+                                                  <li id="SB" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="SB"> <span class="form-checkbox-label">シングル</span></label></li>
+                                                  <li id="TB" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="TB"> <span class="form-checkbox-label">ツイン</span></label></li>
+                                                  <li id="TR" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="TR"> <span class="form-checkbox-label">トリプル</span></label></li>
+                                                  <li id="4B" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="4B"> <span class="form-checkbox-label">4ベッド</span></label></li>
+                                                  <li id="DB" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="DB"> <span class="form-checkbox-label">ダブル</span></label></li>
+                                                  <li id="SUSW" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="SUSW"> <span class="form-checkbox-label">スイート</span></label></li>
+                                                  <li id="JP" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="JP"> <span class="form-checkbox-label">和室</span></label></li>
+                                                  <li id="JW" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="JW"> <span class="form-checkbox-label">和洋室</span></label></li>
+                                                  <li id="CT" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="CT"> <span class="form-checkbox-label">コテージ</span></label></li>
+                                                  <li id="SP" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="SP"> <span class="form-checkbox-label">特別室</span></label></li>
+                                                  <li id="RT" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="RT"> <span class="form-checkbox-label">貸別荘</span></label></li>
+                                                  <li id="WT" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="WT"> <span class="form-checkbox-label">洋室</span></label></li>
+                                                  <li id="MZ" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="MZ"> <span class="form-checkbox-label">メゾネット</span></label></li>
+                                                  <li id="SH" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="SH"> <span class="form-checkbox-label">相部屋</span></label></li>
+                                                  <li id="OTMT" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="room[]" value="OTMT"> <span class="form-checkbox-label">その他</span></label></li>
+                                                </ul>
+                                              </dd>
+                                            </dl>
+                                            <dl class="srh-param-detail-group"> <dt class="srh-param-detail-group__head form-label">施設・設備・サービス</dt>
+                                              <dd class="srh-param-detail-group__body">
+                                                <ul class="srh-param-detail-group__items">
+                                                  <li id="sb8" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb8"> <span class="form-checkbox-label">駅から徒歩5分</span></label></li>
+                                                  <li id="sb7" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb7"> <span class="form-checkbox-label">送迎あり</span></label></li>
+                                                  <li id="sb11" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb11"> <span class="form-checkbox-label">駐車場あり（無料）</span></label></li>
+                                                  <li id="sb10" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb10"> <span class="form-checkbox-label">駐車場あり（有料・無料）</span></label></li>
+                                                  <li id="sb26" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb26"> <span class="form-checkbox-label">お部屋からのインターネット接続可能（無線）</span></label></li>
+                                                  <li id="sb27" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb27"> <span class="form-checkbox-label">お部屋からのインターネット接続可能（有線）</span></label></li>
+                                                  <li id="sb12" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb12"> <span class="form-checkbox-label">バーあり</span></label></li>
+                                                  <li id="sb13" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb13"> <span class="form-checkbox-label">ラウンジあり</span></label></li>
+                                                  <li id="sb14" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb14"> <span class="form-checkbox-label">コンビニあり</span></label></li>
+                                                  <li id="sb15" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb15"> <span class="form-checkbox-label">ジムあり</span></label></li>
+                                                  <li id="sb16" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb16"> <span class="form-checkbox-label">コインランドリーあり</span></label></li>
+                                                  <li id="sb21" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb21"> <span class="form-checkbox-label">車椅子用エレベーターあり</span></label></li>
+                                                  <li id="sb24" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb24"> <span class="form-checkbox-label">車椅子での移動が可能</span></label></li>
+                                                  <li id="sb17" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb17"> <span class="form-checkbox-label">プールあり</span></label></li>
+                                                  <li id="sb18" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb18"> <span class="form-checkbox-label">ルームサービスあり</span></label></li>
+                                                  <li id="sb19" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb19"> <span class="form-checkbox-label">クリーニングサービスあり</span></label></li>
+                                                </ul>
+                                              </dd>
+                                            </dl>
+                                            <dl class="srh-param-detail-group"> <dt class="srh-param-detail-group__head form-label">お風呂の特徴</dt>
+                                              <dd class="srh-param-detail-group__body">
+                                                <ul class="srh-param-detail-group__items">
+                                                  <li id="bb14" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb14"> <span class="form-checkbox-label">温泉（鉱泉含む）あり</span></label></li>
+                                                  <li id="bb1" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb1"> <span class="form-checkbox-label">大浴場あり</span></label></li>
+                                                  <li id="bb2" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb2"> <span class="form-checkbox-label">露天風呂あり</span></label></li>
+                                                  <li id="bb12" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb12"> <span class="form-checkbox-label">サウナあり</span></label></li>
+                                                  <li id="bb13" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb13"> <span class="form-checkbox-label">家族風呂あり</span></label></li>
+                                                  <li id="bb3" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb3"> <span class="form-checkbox-label">混浴露天風呂あり</span></label></li>
+                                                  <li id="bb4" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb4"> <span class="form-checkbox-label">展望風呂あり</span></label></li>
+                                                </ul>
+                                              </dd>
+                                            </dl>
+                                            <dl class="srh-param-detail-group">
+                                              <dt class="srh-param-detail-group__head form-label">お部屋の特徴</dt>
+                                              <dd class="srh-param-detail-group__body">
+                                                <ul class="srh-param-detail-group__items">
+                                                  <li class="srh-param-detail-group__item">
+                                                    <label class="form-checkbox">
+                                                      <input id="rb8" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb8">
+                                                      <span class="form-checkbox-label">禁煙ルーム</span>
+                                                    </label>
+                                                  </li>
+                                                  <li class="srh-param-detail-group__item">
+                                                    <label class="form-checkbox">
+                                                      <input id="rb5" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb5">
+                                                      <span class="form-checkbox-label">露天風呂付客室</span>
+                                                    </label>
+                                                  </li>
+                                                  <li class="srh-param-detail-group__item">
+                                                    <label class="form-checkbox">
+                                                      <input id="rb3" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb3">
+                                                      <span class="form-checkbox-label">風呂付</span>
+                                                    </label>
+                                                  </li>
+                                                  <li class="srh-param-detail-group__item">
+                                                    <label class="form-checkbox">
+                                                      <input id="rb6" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb6">
+                                                      <span class="form-checkbox-label">離れ</span>
+                                                    </label>
+                                                  </li>
+                                                  <li class="srh-param-detail-group__item">
+                                                    <label class="form-checkbox">
+                                                      <input id="rb7" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb7">
+                                                      <span class="form-checkbox-label">レディースルーム</span>
+                                                    </label>
+                                                  </li>
+                                                  <li class="srh-param-detail-group__item">
+                                                    <label class="form-checkbox">
+                                                      <input id="rb1" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb1">
+                                                      <span class="form-checkbox-label">シングル20平米以上、ツイン35平米以上、ダブル25平米以上のお部屋</span>
+                                                    </label>
+                                                  </li>
+                                                  <li class="srh-param-detail-group__item">
+                                                    <label class="form-checkbox">
+                                                      <input id="rb2" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb2">
+                                                      <span class="form-checkbox-label">ベット幅が広い</span>
+                                                    </label>
+                                                    <span class="form-checkbox-label-question">
+                                                      <i class="fa-regular fa-circle-question" style="font-size:16px;"></i>
+                                                      <span class="tooltip tooltip-bed">シングル・ツインの場合幅130センチメートル以上、ダブルの場合幅180センチメートル以上</span>
+                                                    </span>
+                                                  </li>
+                                                  <li class="srh-param-detail-group__item">
+                                                    <label class="form-checkbox">
+                                                      <input id="rb11" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb11">
+                                                      <span class="form-checkbox-label">海が見える</span>
+                                                    </label>
+                                                  </li>
+                                                  <li class="srh-param-detail-group__item">
+                                                    <label class="form-checkbox">
+                                                      <input id="rb17" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb17">
+                                                      <span class="form-checkbox-label">夜景が見える</span>
+                                                    </label>
+                                                  </li>
+                                                </ul>
+                                              </dd>
+                                            </dl>
+                                            <dl class="srh-param-detail-group"> <dt class="srh-param-detail-group__head form-label">その他</dt>
+                                              <dd class="srh-param-detail-group__body">
+                                                <ul class="srh-param-detail-group__items">
+                                                  <li class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" id="pb2" value="pb2"> <span class="form-checkbox-label">14時以前チェックインまたは12時以降チェックアウト</span></label></li>
+                                                </ul>
+                                              </dd>
+                                            </dl>
+                                          </div>
+                                        </div>
+                                        <div class="panel-footer">
+                                          <div class="panel-footer__inner">
+                                            <ul class="panel-action__items">
+                                              <li class="panel-action__item panel-action__item--cancel"> <button type="button" id="reset_btn" class="panel-action__btn panel-action__btn--cancel btn btn--cancel">リセット</button> </li>
+                                              <li class="panel-action__item panel-action__item--submit"> <button type="button" id="submit_btn" class="panel-action__btn panel-action__btn--submit btn btn--submit">閉じる</button> </li>
                                             </ul>
-                                          </dd>
-                                        </dl>
-                                        <dl class="srh-param-detail-group"> <dt class="srh-param-detail-group__head form-label">施設・設備・サービス</dt>
-                                          <dd class="srh-param-detail-group__body">
-                                            <ul class="srh-param-detail-group__items">
-                                              <li id="sb8" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb8"> <span class="form-checkbox-label">駅から徒歩5分</span></label></li>
-                                              <li id="sb7" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb7"> <span class="form-checkbox-label">送迎あり</span></label></li>
-                                              <li id="sb11" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb11"> <span class="form-checkbox-label">駐車場あり（無料）</span></label></li>
-                                              <li id="sb10" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb10"> <span class="form-checkbox-label">駐車場あり（有料・無料）</span></label></li>
-                                              <li id="sb26" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb26"> <span class="form-checkbox-label">お部屋からのインターネット接続可能（無線）</span></label></li>
-                                              <li id="sb27" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb27"> <span class="form-checkbox-label">お部屋からのインターネット接続可能（有線）</span></label></li>
-                                              <li id="sb12" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb12"> <span class="form-checkbox-label">バーあり</span></label></li>
-                                              <li id="sb13" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb13"> <span class="form-checkbox-label">ラウンジあり</span></label></li>
-                                              <li id="sb14" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb14"> <span class="form-checkbox-label">コンビニあり</span></label></li>
-                                              <li id="sb15" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb15"> <span class="form-checkbox-label">ジムあり</span></label></li>
-                                              <li id="sb16" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb16"> <span class="form-checkbox-label">コインランドリーあり</span></label></li>
-                                              <li id="sb21" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb21"> <span class="form-checkbox-label">車椅子用エレベーターあり</span></label></li>
-                                              <li id="sb24" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb24"> <span class="form-checkbox-label">車椅子での移動が可能</span></label></li>
-                                              <li id="sb17" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb17"> <span class="form-checkbox-label">プールあり</span></label></li>
-                                              <li id="sb18" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb18"> <span class="form-checkbox-label">ルームサービスあり</span></label></li>
-                                              <li id="sb19" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="sb19"> <span class="form-checkbox-label">クリーニングサービスあり</span></label></li>
-                                            </ul>
-                                          </dd>
-                                        </dl>
-                                        <dl class="srh-param-detail-group"> <dt class="srh-param-detail-group__head form-label">お風呂の特徴</dt>
-                                          <dd class="srh-param-detail-group__body">
-                                            <ul class="srh-param-detail-group__items">
-                                              <li id="bb14" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb14"> <span class="form-checkbox-label">温泉（鉱泉含む）あり</span></label></li>
-                                              <li id="bb1" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb1"> <span class="form-checkbox-label">大浴場あり</span></label></li>
-                                              <li id="bb2" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb2"> <span class="form-checkbox-label">露天風呂あり</span></label></li>
-                                              <li id="bb12" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb12"> <span class="form-checkbox-label">サウナあり</span></label></li>
-                                              <li id="bb13" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb13"> <span class="form-checkbox-label">家族風呂あり</span></label></li>
-                                              <li id="bb3" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb3"> <span class="form-checkbox-label">混浴露天風呂あり</span></label></li>
-                                              <li id="bb4" class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" value="bb4"> <span class="form-checkbox-label">展望風呂あり</span></label></li>
-                                            </ul>
-                                          </dd>
-                                        </dl>
-                                        <dl class="srh-param-detail-group">
-                                          <dt class="srh-param-detail-group__head form-label">お部屋の特徴</dt>
-                                          <dd class="srh-param-detail-group__body">
-                                            <ul class="srh-param-detail-group__items">
-                                              <li class="srh-param-detail-group__item">
-                                                <label class="form-checkbox">
-                                                  <input id="rb8" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb8">
-                                                  <span class="form-checkbox-label">禁煙ルーム</span>
-                                                </label>
-                                              </li>
-                                              <li class="srh-param-detail-group__item">
-                                                <label class="form-checkbox">
-                                                  <input id="rb5" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb5">
-                                                  <span class="form-checkbox-label">露天風呂付客室</span>
-                                                </label>
-                                              </li>
-                                              <li class="srh-param-detail-group__item">
-                                                <label class="form-checkbox">
-                                                  <input id="rb3" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb3">
-                                                  <span class="form-checkbox-label">風呂付</span>
-                                                </label>
-                                              </li>
-                                              <li class="srh-param-detail-group__item">
-                                                <label class="form-checkbox">
-                                                  <input id="rb6" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb6">
-                                                  <span class="form-checkbox-label">離れ</span>
-                                                </label>
-                                              </li>
-                                              <li class="srh-param-detail-group__item">
-                                                <label class="form-checkbox">
-                                                  <input id="rb7" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb7">
-                                                  <span class="form-checkbox-label">レディースルーム</span>
-                                                </label>
-                                              </li>
-                                              <li class="srh-param-detail-group__item">
-                                                <label class="form-checkbox">
-                                                  <input id="rb1" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb1">
-                                                  <span class="form-checkbox-label">シングル20平米以上、ツイン35平米以上、ダブル25平米以上のお部屋</span>
-                                                </label>
-                                              </li>
-                                              <li class="srh-param-detail-group__item">
-                                                <label class="form-checkbox">
-                                                  <input id="rb2" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb2">
-                                                  <span class="form-checkbox-label">ベット幅が広い</span>
-                                                </label>
-                                                <span class="form-checkbox-label-question">
-                                                  <i class="fa-regular fa-circle-question" style="font-size:16px;"></i>
-                                                  <span class="tooltip tooltip-bed">シングル・ツインの場合幅130センチメートル以上、ダブルの場合幅180センチメートル以上</span>
-                                                </span>
-                                              </li>
-                                              <li class="srh-param-detail-group__item">
-                                                <label class="form-checkbox">
-                                                  <input id="rb11" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb11">
-                                                  <span class="form-checkbox-label">海が見える</span>
-                                                </label>
-                                              </li>
-                                              <li class="srh-param-detail-group__item">
-                                                <label class="form-checkbox">
-                                                  <input id="rb17" type="checkbox" class="form-checkbox-input" name="tags[]" value="rb17">
-                                                  <span class="form-checkbox-label">夜景が見える</span>
-                                                </label>
-                                              </li>
-                                            </ul>
-                                          </dd>
-                                        </dl>
-                                        <dl class="srh-param-detail-group"> <dt class="srh-param-detail-group__head form-label">その他</dt>
-                                          <dd class="srh-param-detail-group__body">
-                                            <ul class="srh-param-detail-group__items">
-                                              <li class="srh-param-detail-group__item"><label class="form-checkbox"><input type="checkbox" class="form-checkbox-input" name="tags[]" id="pb2" value="pb2"> <span class="form-checkbox-label">14時以前チェックインまたは12時以降チェックアウト</span></label></li>
-                                            </ul>
-                                          </dd>
-                                        </dl>
-                                      </div>
-                                    </div>
-                                    <div class="panel-footer">
-                                      <div class="panel-footer__inner">
-                                        <ul class="panel-action__items">
-                                          <li class="panel-action__item panel-action__item--cancel"> <button type="button" id="reset_btn" class="panel-action__btn panel-action__btn--cancel btn btn--cancel">リセット</button> </li>
-                                          <li class="panel-action__item panel-action__item--submit"> <button type="button" id="submit_btn" class="panel-action__btn panel-action__btn--submit btn btn--submit">閉じる</button> </li>
-                                        </ul>
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                          </div> <input type="hidden" id="tags_text" name="tags_text" value="" data-srh-detail=""> </li>
-                      </ul>
+                              <input type="hidden" id="tags_text" name="tags_text" value="" data-srh-detail="">
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="srh-param-actions">
@@ -462,9 +469,6 @@ export default {
   data() {
     return {
       keyword: 'skeyword',
-      placeholder: '宿泊施設名を入力',
-      skeyword: 'skeyword',
-      pkeyword: 'pkeyword',
       skeyPlholder: '宿泊施設名を入力',
       pkeyPlholder: 'プラン名を入力',
       baseUrl: 'http://tvg-vm.local/search/',
@@ -484,21 +488,9 @@ export default {
       }
     ]
   },
-  mounted() {
-  },
-  methods: {
-    skeywordClick() {
-      this.keyword = this.skeyword
-      this.placeholder = this.skeyPlholder
-    },
-    pkeywordClick() {
-      this.keyword = this.pkeyword
-      this.placeholder = this.pkeyPlholder
-    }
-  },
-  watch: {
-    selectArea(area, old) {
-      console.log(area)
+  computed: {
+    placeholder () {
+      return this.keyword === 'skeyword' ? this.skeyPlholder : this.pkeyPlholder
     }
   }
 }

@@ -26,18 +26,6 @@
               </button>
             </div>
             <div class="panel-content srh-param-area" data-tab-root="area_select">
-              <div class="panel-header">
-                <div class="panel-header__inner">
-                  <ul class="tab-nav">
-                    <li class="tab-nav__item active">
-                      <a href="#area_select-area" class="tab-nav__link ignore active" data-tab-btn="area_select">エリア</a>
-                    </li>
-                    <li class="tab-nav__item">
-                      <a href="#area_select-popular" class="tab-nav__link ignore" data-tab-btn="area_select">人気の観光地</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
               <div class="panel-body">
                 <div class="panel-body__inner">
                   <div class="tab-content">
@@ -58,6 +46,7 @@
                                     name="area_select"
                                     :value="$AREA_EN_NAME[pref.code] + '/pr' + pref.code"
                                     class="form-radio-input"
+                                    :checked="areaCode===pref.code? true : false"
                                     @click="areaSelect(pref)"
                                   >
                                   <span class="form-radio-label">{{ pref.name }}</span>
@@ -74,12 +63,12 @@
                                       <label class="form-radio">
                                         <input
                                           :id="'area_' + sub.code"
+                                          v-model="areaURL"
                                           type="radio"
                                           name="area_select"
                                           :value="$AREA_EN_NAME[pref.code] + '/su' + sub.code"
-                                          @click="areaSelect(sub)"
-                                          v-model="areaName"
                                           class="form-radio-input"
+                                          @click="areaSelect(sub)"
                                         >
                                         <span class="form-radio-label">{{ sub.name }}</span>
                                       </label>
@@ -92,12 +81,12 @@
                                             <label class="form-radio">
                                               <input
                                                 :id="'area_' + mesh.code"
+                                                v-model="areaURL"
                                                 type="radio"
                                                 name="area_select"
                                                 :value="$AREA_EN_NAME[pref.code] + '/ms' + mesh.code"
-                                                @click="areaSelect(mesh)"
-                                                v-model="areaName"
                                                 class="form-radio-input"
+                                                @click="areaSelect(mesh)"
                                               >
                                               <span class="form-radio-label">{{ mesh.name }}</span>
                                             </label>
@@ -113,13 +102,15 @@
                         </ul>
                       </div>
                     </div>
-                    <div id="area_select-popular"
+                    <div
+                      id="area_select-popular"
                       class="tab-content__pane"
                       data-tab-cts="area_select"
                     >
                       <div class="area-select-popular">
                         <ul class="area-select-popular__items">
-                          <li v-for="popular in $POPULAR_NAME"
+                          <li
+                            v-for="popular in $POPULAR_NAME"
                             :key="popular.code"
                             class="area-select-popular__item"
                           >
@@ -128,8 +119,8 @@
                               type="radio"
                               name="area_select"
                               :value="popular.code"
-                              @click="areaSelect(popular)"
                               class="form-radio-input none"
+                              @click="areaSelect(popular)"
                             >
                             <button type="button" class="area-select-popular__btn" :value="'popular_' + popular.code.substr(2)">
                               {{ popular.name }}
@@ -166,15 +157,14 @@ export default {
   data() {
     return {
       areaName: '東京都',
-      areaCode: '13'
+      areaCode: '13',
+      areaURL: ''
     }
-  },
-  mounted() {
   },
   methods: {
     areaSelect(data) {
+      this.areaName = data.name
       this.$parent.selectArea = this.$AREA_EN_NAME[data.code] + '/pr' + data.code
-      console.log(data.name)
     }
   }
 }
