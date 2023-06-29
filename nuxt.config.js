@@ -27,6 +27,20 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      {
+        src: '/js/custom/common.js',
+        defer: true
+      },
+      {
+        src: '/js/jquery-3.5.1.min.js',
+        defer: true
+      },
+      { 
+        src: '/js/custom/panel-util.js',
+        defer: true
+      }
     ]
   },
 
@@ -42,10 +56,7 @@ export default {
   
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/area_name.js' },
-    { src: '~/static/js/jquery-3.5.1.min.js' },
-    { src: '~/static/js/custom/common.js' },
-    { src: '~/static/js/custom/panel-util.js' }
+    { src: '~/plugins/area_name.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
