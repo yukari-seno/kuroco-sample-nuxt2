@@ -208,6 +208,12 @@ export default {
         defer: true
       }
     ]
+  },
+  methods: {
+    prefClick(num) {
+      this.pref = this.$AREA_TAB_NAME[num]
+      this.pref_show = this.$AREA_TAB_NAME[num]
+    }
   }
 }
 </script>
