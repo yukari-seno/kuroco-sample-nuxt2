@@ -1,4 +1,7 @@
 /* mv slider*/
+.mv-container .slide .ssr-carousel-slide:not(.active){
+    opacity: 0.8;
+}
 .mv-container .slide .ssr-carousel-slide img {
     border: 1px solid #fff;
     border-radius: 5px;
@@ -9,35 +12,6 @@
 .mv-container .ssr-carousel-dots {
     text-align: center;
     margin: 16px 0 0 0;
-}
-.ssr-carousel-dot-button {
-    display: inline-block;
-    margin: 0 12px;
-}
-.ssr-carousel-dot-icon {
-    color: transparent;
-    outline: none;
-    min-width: 10px;
-    width: 1.8vw;
-    max-width: 16px;
-    min-height: 10px;
-    height: 1.8vw;
-    max-height: 16px;
-    display: block;
-    border-radius: 50%;
-    background: #C0CDD7;
-}
-[aria-disabled] > .ssr-carousel-dot-icon {
-    background: #003149 !important;
-}
-.mv-container .ssr-carousel-arrows {
-    top: 11.5vw;
-}
-.mv-container .ssr-carousel-back-button {
-    left: 2vw;
-}
-.mv-container .ssr-carousel-next-button {
-    right: 2vw;
 }
 
 /* 都道府県　ラベル */

@@ -4,14 +4,19 @@
       <!-- テーマ・目的別にホテル・旅館を探す -->
       <div class="title">
         <h2 class="marker-under">{{ theme.list[0].contents_type_ext_col_01 }}</h2>
-          <div v-if="theme.pageInfo.totalCnt > 4" class="btn--more pc-only"><a :href="theme.list.contents_type_ext_col_02">すべてみる</a></div>
+          <div v-if="theme.pageInfo.totalCnt > 4" class="btn--more pc-only"><a :href="theme.list[0].contents_type_ext_col_02">すべてみる</a></div>
       </div>
       <div class="theme-slider slider-wrap">
         <ssr-carousel
           :slides-per-page="4"
           show-arrows
-          peek="40"
-          :peek-right='40'
+          :peek-right='60'
+          :responsive='[
+            {
+              maxWidth: 768,
+              slidesPerPage: 2,
+            }
+          ]'
         >
           <div
             v-for="(slide, index) in theme.list"
@@ -83,7 +88,14 @@
               </div>
             </slide>
           </div>
+          <template #back-arrow>
+            <img class="ssr-carousel-back-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
+          </template>
+          <template #next-arrow>
+            <img class="ssr-carousel-next-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
+          </template>
         </ssr-carousel>
+        <div class="view-more hotel-sec__more sp-only"><a :href="theme.list[0].contents_type_ext_col_02">すべてみる</a></div>
       </div>
       <hr>
     </div>
@@ -92,7 +104,7 @@
     <div class="search-theme__container">
       <div class="title">
         <h2 class="marker-under">{{ sightseeing.list[0].contents_type_ext_col_01 }}</h2>
-          <div v-if="sightseeing.pageInfo.totalCnt > 4" class="btn--more pc-only"><a :href="sightseeing.list.contents_type_ext_col_02">すべてみる</a></div>
+          <div v-if="sightseeing.pageInfo.totalCnt > 4" class="btn--more pc-only"><a :href="sightseeing.list[0].contents_type_ext_col_02">すべてみる</a></div>
       </div>
       <div class="theme-slider slider-wrap">
         <ssr-carousel
@@ -141,7 +153,14 @@
               </div>
             </slide>
           </div>
+          <template #back-arrow>
+            <img class="ssr-carousel-back-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
+          </template>
+          <template #next-arrow>
+            <img class="ssr-carousel-next-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
+          </template>
         </ssr-carousel>
+        <div class="view-more hotel-sec__more sp-only"><a :href="sightseeing.list[0].contents_type_ext_col_02">すべてみる</a></div>
       </div>
       <hr>
     </div>
@@ -149,7 +168,7 @@
     <!-- 広告[PR] ここから -->
     <div v-if="advertisement.pageInfo.totalCnt != 0" class="search-theme__container">
       <div class="title">
-        <h2 class="marker-under">{{ advertisement.list[0].contents_type_ext_col_01 }}</h2>
+        <h2 class="marker-under">{{ advertisement.list[0].group_nm }}</h2>
       </div>
       <div class="theme-slider slider-wrap">
         <ssr-carousel
@@ -198,6 +217,12 @@
               </div>
             </slide>
           </div>
+          <template #back-arrow>
+            <img class="ssr-carousel-back-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
+          </template>
+          <template #next-arrow>
+            <img class="ssr-carousel-next-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
+          </template>
         </ssr-carousel>
       </div>
       <hr>
@@ -207,7 +232,7 @@
     <div v-if="coupon.pageInfo.totalCnt != 0" class="search-theme__container">
       <div class="title">
         <h2 class="marker-under">{{ coupon.list[0].contents_type_ext_col_01 }}</h2>
-          <div v-if="coupon.pageInfo.totalCnt > 4" class="btn--more pc-only"><a :href="coupon.list.contents_type_ext_col_02">すべてみる</a></div>
+          <div v-if="coupon.pageInfo.totalCnt > 4" class="btn--more pc-only"><a :href="coupon.list[0].contents_type_ext_col_02">すべてみる</a></div>
       </div>
       <div class="theme-slider slider-wrap">
         <ssr-carousel
@@ -249,7 +274,14 @@
               </div>
             </slide>
           </div>
+          <template #back-arrow>
+            <img class="ssr-carousel-back-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
+          </template>
+          <template #next-arrow>
+            <img class="ssr-carousel-next-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
+          </template>
         </ssr-carousel>
+        <div class="view-more hotel-sec__more sp-only"><a :href="coupon.list[0].contents_type_ext_col_02">すべてみる</a></div>
       </div>
       <hr>
     </div>

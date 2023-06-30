@@ -1,0 +1,104 @@
+.ssr-carousel-track {
+    justify-content: left !important;
+}
+.mv-container .ssr-carousel-dots {
+    text-align: center;
+    margin: 16px 0 0 0;
+}
+.mv-container .ssr-carousel-dots .ssr-carousel-dot-button {
+    display: inline-block;
+    margin: 0 12px;
+}
+.ssr-carousel-dot-icon {
+    border: none;
+    color: transparent;
+    min-width: 10px;
+    width: 1.8vw;
+    max-width: 16px;
+    min-height: 10px;
+    height: 1.8vw;
+    max-height: 16px;
+    display: block;
+    border-radius: 50%;
+    background: #C0CDD7;
+}
+.ssr-carousel-back-icon,
+.ssr-carousel-next-icon {
+    cursor: pointer;
+    z-index: 1;
+    width: 8vw;
+    max-width: 30px;
+    background-color: rgba(0,0,0,0) !important;
+}
+.ssr-carousel-back-button::before,
+.ssr-carousel-next-button::before{
+    display: none;
+}
+.ssr-carousel-back-button .ssr-carousel-back-icon {
+    transform: scale(-1, 1);
+}
+[aria-disabled] > .ssr-carousel-back-icon,
+[aria-disabled] > .ssr-carousel-next-icon{
+    display: none;
+}
+.mv-container .ssr-carousel-back-button {
+    left: 15vw;
+}
+.mv-container .ssr-carousel-next-button {
+    right: 15vw;
+}
+
+@media only screen and (min-width:768px) {
+    /* slider */
+    .ssr-carousel-back-icon,
+    .ssr-carousel-next-icon {
+        cursor: pointer;
+        z-index: 1;
+        width: 12vw;
+        max-width: 35px;
+        background-color: rgba(0,0,0,0) !important;
+    }
+    /* 都道府県　ラベル */
+    .jp-area {
+        gap: 16px 32px;
+        margin-bottom: 32px;
+    }
+    .jp-area label {
+        font-size: 2rem;
+    }
+    /* 都道府県　画像 */
+    .prefectures .prefecture {
+        width: calc(100% / 2 - 16px / 2);
+        height: 20.67vw;
+    }
+}
+@media only screen and (min-width:1025px) {
+    /* slider */
+    .ssr-carousel-back-icon,
+    .ssr-carousel-next-icon {
+        cursor: pointer;
+        z-index: 1;
+        width: 25vw;
+        max-width: 40px;
+        background-color: rgba(0,0,0,0) !important;
+    }
+    .mv-container .ssr-carousel-back-button {
+        left: min(25vw, 500px);
+    }
+    .mv-container .ssr-carousel-next-button {
+        right: min(25vw, 500px);
+    }
+    /* 都道府県　ラベル */
+    .jp-area {
+        gap: 16px 32px;
+        margin-bottom: 32px;
+    }
+    .jp-area label {
+        font-size: 2rem;
+    }
+    /* 都道府県　画像 */
+    .prefectures .prefecture {
+        width: calc(100% / 3 - 32px / 3);
+        height: min(14.47vw, 194.5px);
+    }
+}
