@@ -1,5 +1,15 @@
 /* mv slider*/
-
+.mv-container .slide .ssr-carousel-slide img {
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+.mv-container .slide .ssr-carousel-slide.active img {
+    border: 1px solid #003149;
+}
+.mv-container .ssr-carousel-dots {
+    text-align: center;
+    margin: 16px 0 0 0;
+}
 .ssr-carousel-dot-button {
     display: inline-block;
     margin: 0 12px;
