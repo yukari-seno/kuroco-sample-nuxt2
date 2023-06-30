@@ -58,6 +58,10 @@
         max-width: 35px;
         background-color: rgba(0,0,0,0) !important;
     }
+    [aria-disabled] > .ssr-carousel-back-icon,
+    [aria-disabled] > .ssr-carousel-next-icon{
+        display: none;
+    }
     /* 都道府県　ラベル */
     .jp-area {
         gap: 16px 32px;
@@ -74,6 +78,12 @@
 }
 @media only screen and (min-width:1025px) {
     /* slider */
+    .mv-container .ssr-carousel-dots {
+        margin: 32px 0 0 0;
+    }
+    .mv-container .ssr-carousel-dots .ssr-carousel-dot-button {
+        margin: 0 16px;
+    }
     .ssr-carousel-back-icon,
     .ssr-carousel-next-icon {
         cursor: pointer;
@@ -87,6 +97,10 @@
     }
     .mv-container .ssr-carousel-next-button {
         right: min(25vw, 500px);
+    }
+    [aria-disabled] > .ssr-carousel-back-icon,
+    [aria-disabled] > .ssr-carousel-next-icon{
+        display: none;
     }
     /* 都道府県　ラベル */
     .jp-area {

@@ -47,8 +47,8 @@
                                     :value="$AREA_EN_NAME[pref.code] + '/pr' + pref.code"
                                     class="form-radio-input"
                                     :checked="areaCode===pref.code? true : false"
-                                    @click="areaSelect(pref)"
-                                  >
+                                    >
+                                    <!-- @click="areaSelect(pref)" -->
                                   <span class="form-radio-label">{{ pref.name }}</span>
                                 </label>
                               </div>
@@ -63,13 +63,12 @@
                                       <label class="form-radio">
                                         <input
                                           :id="'area_' + sub.code"
-                                          v-model="areaURL"
                                           type="radio"
                                           name="area_select"
                                           :value="$AREA_EN_NAME[pref.code] + '/su' + sub.code"
                                           class="form-radio-input"
-                                          @click="areaSelect(sub)"
-                                        >
+                                          >
+                                          <!-- @click="areaSelect(sub)" -->
                                         <span class="form-radio-label">{{ sub.name }}</span>
                                       </label>
                                     </div>
@@ -81,13 +80,12 @@
                                             <label class="form-radio">
                                               <input
                                                 :id="'area_' + mesh.code"
-                                                v-model="areaURL"
                                                 type="radio"
                                                 name="area_select"
                                                 :value="$AREA_EN_NAME[pref.code] + '/ms' + mesh.code"
                                                 class="form-radio-input"
-                                                @click="areaSelect(mesh)"
-                                              >
+                                                >
+                                                <!-- @click="areaSelect(mesh)" -->
                                               <span class="form-radio-label">{{ mesh.name }}</span>
                                             </label>
                                           </div>
@@ -157,14 +155,7 @@ export default {
   data() {
     return {
       areaName: '東京都',
-      areaCode: '13',
-      areaURL: ''
-    }
-  },
-  methods: {
-    areaSelect(data) {
-      this.areaName = data.name
-      this.$parent.selectArea = this.$AREA_EN_NAME[data.code] + '/pr' + data.code
+      areaCode: '13'
     }
   }
 }

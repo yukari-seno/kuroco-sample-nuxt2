@@ -481,7 +481,7 @@ export default {
       keyword: 'skeyword',
       skeyPlholder: '宿泊施設名を入力',
       pkeyPlholder: 'プラン名を入力',
-      baseUrl: 'http://tvg-vm.local/search/',
+      baseUrl: process.env.TVG_URL,
       selectArea: ''
     }
   },

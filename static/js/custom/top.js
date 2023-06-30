@@ -1,20 +1,3 @@
-// mv　スライダー
-// $('.mv-container .slider').slick({
-//     autoplay: true,
-//     speed: 800,
-//     slidesToShow: 3,
-//     slidesToScroll: 1,
-//     prevArrow: '<div class="slick-prev"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo="><div class="slick-prev" alt="prev"></div>',
-//     nextArrow: '<div class="slick-next"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo="><div class="slick-prev" alt="next"></div>',
-//     centerMode: true,
-//     centerPadding: '25vw',
-//     variableWidth: true,
-//     dots: true,
-// });
-// $(function () { 
-// 	$('.slick-track').css('transform','translate3d(0px, 0px, 0px)');
-// });
-
 //アコーディオンをクリックした時の動作
 $(function(){
     $('.select-choice-wrap').hide()
@@ -28,19 +11,6 @@ $(function(){
         }
     });
 });
-
-// 都道府県の表示切替
-// $(function(){
-//     $(".prefecture-col:not(.hokkaido-tohoku)").hide();
-//     $("#hokkaido-tohoku").click();
-//     $(".jp-area input").on('click', function() {
-//         var select_id = $(this).attr('id');
-//         $(".prefecture-col").hide();
-//         $("." + select_id).show(function(){
-//             $(".prefecture-col").not(this).hide();
-//         });
-//     });
-// });
 
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({

@@ -95,22 +95,6 @@
 }
 
 @media only screen and (min-width:1025px) {
-    /* slider */
-    .ssr-carousel-dots {
-        margin: 32px 0 0 0;
-    }
-    .ssr-carousel-dots li {
-        margin: 0 16px;
-    }
-    .mv-container .slick-arrow {
-        top: min(12.5vw, max(140px));
-    }
-    .mv-container .slick-prev {
-        left: 18vw;
-    }
-    .mv-container .slick-next {
-        right: 18vw;
-    }
     /* 都道府県　ラベル */
     .jp-area {
         gap: 16px 32px;

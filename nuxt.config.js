@@ -15,7 +15,7 @@ export default {
   
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'kuroco-sample-nuxt2',
+    title: 'たびゲーター宿泊予約',
     htmlAttrs: {
       lang: 'ja'
     },

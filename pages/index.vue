@@ -186,25 +186,7 @@ export default {
       page: 0,
       tvg_url: process.env.TVG_URL,
       pref: 'hokkaido-tohoku',
-      pref_show: 'hokkaido-tohoku',
-      // slickの設定
-      slickOptions: {
-        autoplay: true,
-        dots: true,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 6,
-        slidesToScroll: 3,
-        responsive: [
-          {
-            breakpoint: 992,
-            settings: {
-              slidesToShow: 4,
-              slidesToScroll: 2
-            }
-          }
-        ]
-      }
+      pref_show: 'hokkaido-tohoku'
     }
   },
   head: {
@@ -218,10 +200,6 @@ export default {
         defer: true
       },
       {
-        src: '/js/custom/search-room-nums.js',
-        defer: true
-      },
-      {
         src: '/js/custom/search-checkin-out.js',
         defer: true
       },
@@ -230,19 +208,6 @@ export default {
         defer: true
       }
     ]
-  },
-  methods: {
-    next() {
-      this.$refs.slick.next()
-    },
-    prev() {
-      this.$refs.slick.prev()
-    },
-    reInit() {
-      this.$nextTick(() => {
-        this.$refs.slick.reSlick()
-      })
-    }
   }
 }
 </script>
@@ -250,7 +215,6 @@ export default {
 <style scoped>
 
 @import "assets/css/top.css";
-@import "assets/css/slick-theme.css";
 
 .slide-image {
   width: 100%;
