@@ -68,8 +68,8 @@
         <!-- その他リンク ここから -->
         <div v-if="otherLink.pageInfo.totalCnt != 0" class="online-insurance__container">
           <div class="title">
-            <h2 class="marker-under">{{ otherLink.list.contents_type_ext_col_01 }}</h2>
-            <div class="btn--more pc-only"><a href="https://www.tavigator.co.jp/insurance/policy.html">{{ otherLink.list.contents_type_ext_col_02 }}</a></div>
+            <h2 class="marker-under">{{ otherLink.list[0].contents_type_ext_col_01 }}</h2>
+            <div class="btn--more pc-only"><a href="https://www.tavigator.co.jp/insurance/policy.html">{{ otherLink.list[0].contents_type_ext_col_02 }}</a></div>
           </div>
           <ul>
             <li v-for="(link, index) in otherLink.list" :key="index">
@@ -78,7 +78,7 @@
               </a>
             </li>
           </ul>
-          <div class="view-more hotel-sec__more sp-only"><a href="https://www.tavigator.co.jp/insurance/policy.html">{{ otherLink.details.listTitle }}</a></div>
+          <div class="view-more hotel-sec__more sp-only"><a :href="otherLink.list[0].contents_type_ext_col_03">{{ otherLink.list[0].contents_type_ext_col_02 }}</a></div>
         </div>
         <!-- その他リンク ここまで -->
       </div>
@@ -231,12 +231,6 @@ export default {
 
 @import "assets/css/top.css";
 @import "assets/css/slick-theme.css";
-
-.container {
-  width: 100%;
-  max-width: 980px;
-  margin: 0 auto;
-}
 
 .slide-image {
   width: 100%;
