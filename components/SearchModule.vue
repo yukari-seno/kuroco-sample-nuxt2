@@ -9,7 +9,7 @@
             </p>
           </div>
           <div id="search-param" class="searchbox-tab-content__pane active" data-tab-cts="searchbox">
-            <form method="GET" action="search" autocomplete="off">
+            <form method="GET" action="http://tvg-vm/search/search" autocomplete="off">
               <div class="srh-param">
                 <div class="srh-param__row">
                   <!-- エリア条件 -->
@@ -43,7 +43,7 @@
                           type="text"
                           class="form-control ignore form-input form-input--select form-input--calendar"
                           placeholder=""
-                          value="2023/05/29"
+                          :value="today"
                           name="date[ckin]"
                           readonly="readonly"
                           data-panel-toggle="stay"
@@ -60,7 +60,7 @@
                           type="text"
                           class="form-control ignore form-input form-input--select form-input--calendar"
                           placeholder=""
-                          value="2023/05/30"
+                          :value="nextday"
                           name="date[ckout]"
                           readonly="readonly"
                           data-panel-toggle="stay"
@@ -140,12 +140,13 @@
                                       <dd class="srh-param-travelers-room-head__select">
                                         <select id="room-num" data-room-num="" name="room_person[room_num_select]">
                                           <option value="1" selected="selected">1</option>
-                                          <option value="2">2</option>
+                                          <!-- 検索サイトに合わせてコメントアウト -->
+                                          <!-- <option value="2">2</option>
                                           <option value="3">3</option>
                                           <option value="4">4</option>
                                           <option value="5">5</option>
                                           <option value="6">6</option>
-                                          <option value="7">7</option>
+                                          <option value="7">7</option> -->
                                         </select>
                                       </dd>
                                     </dl>
@@ -461,6 +462,15 @@
 <script>
 import SearchModuleConditionArea from '~/components/SearchModuleConditionArea'
 
+function getDate(date) {
+  let today = date
+  const y = today.getFullYear()
+  const m = ('00' + (today.getMonth() + 1)).slice(-2)
+  const d = ('00' + (today.getDate())).slice(-2)
+  today = y + '/' + m + '/' + d
+  return today
+}
+
 export default {
   props: ['area'],
   components: {
@@ -478,10 +488,6 @@ export default {
   head: {
     script: [
       {
-        src: '/js/custom/search-keyword.js',
-        defer: true
-      },
-      {
         src: 'https://kit.fontawesome.com/8e5ae900bb.js',
         defer: true,
         crossorigin: 'anonymous'
@@ -491,7 +497,27 @@ export default {
   computed: {
     placeholder () {
       return this.keyword === 'skeyword' ? this.skeyPlholder : this.pkeyPlholder
+    },
+    today () {
+      let today = new Date()
+      today = getDate(today)
+      return today
+    },
+    nextday () {
+      let tomorrow = new Date()
+      tomorrow.setDate(tomorrow.getDate() + 1)
+      tomorrow = getDate(tomorrow)
+      return tomorrow
     }
   }
 }
 </script>
+
+<style>
+.srh-param-travelers-room-head__select{
+  flex: 0 0 auto;
+  width: auto;
+  pointer-events: none;
+  background-color: #f3f3f3;
+}
+</style>

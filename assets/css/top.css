@@ -1,35 +1,10 @@
 /* mv slider*/
-.mv-container .slider img:not(.slick-arrow img) {
-    width:90vw;
-    max-width: 1000px;
-    height: auto;
-    border-radius: 5px;
-}
-.mv-container .slider .slick-slide {
-    transform: scale(0.8);
-    transition: all .5s;
-    opacity: 0.8;
-    margin: 0 -50px;
-    border: 1px solid #fff;
-    border-radius: 5px;
-}
-.mv-container .slider .slick-slide.slick-center {
-    position: sticky;
-    top: 0;
-    border: 1px solid #003149;
-    transform: scale(1);
-    opacity: 1;
-    z-index: 1;
-}
-.mv-container .slick-dots {
-    text-align: center;
-    margin: 16px 0 0 0;
-}
-.mv-container .slick-dots li {
+
+.ssr-carousel-dot-button {
     display: inline-block;
     margin: 0 12px;
 }
-.mv-container .slick-dots button {
+.ssr-carousel-dot-icon {
     color: transparent;
     outline: none;
     min-width: 10px;
@@ -42,16 +17,16 @@
     border-radius: 50%;
     background: #C0CDD7;
 }
-.mv-container .slick-dots .slick-active button {
-    background: #003149;
+[aria-disabled] > .ssr-carousel-dot-icon {
+    background: #003149 !important;
 }
-.mv-container .slick-arrow {
+.mv-container .ssr-carousel-arrows {
     top: 11.5vw;
 }
-.mv-container .slick-prev {
+.mv-container .ssr-carousel-back-button {
     left: 2vw;
 }
-.mv-container .slick-next {
+.mv-container .ssr-carousel-next-button {
     right: 2vw;
 }
 
@@ -113,6 +88,16 @@
     width: 100%;
     height: auto;
 }
+/* 画像の上に文字を表示 */
+.card-image {
+    position: relative;
+}
+.card-image p {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 @media only screen and (min-width:768px) {
     /* 都道府県　画像 */
     .prefectures .prefecture {
@@ -127,10 +112,10 @@
 
 @media only screen and (min-width:1025px) {
     /* slider */
-    .slick-dots {
+    .ssr-carousel-dots {
         margin: 32px 0 0 0;
     }
-    .slick-dots li {
+    .ssr-carousel-dots li {
         margin: 0 16px;
     }
     .mv-container .slick-arrow {

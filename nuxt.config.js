@@ -48,10 +48,7 @@ export default {
   css: [
     '@/assets/css/common.css',
     '@/assets/css/module.css',
-    '@/assets/css/style.css',
     '@/assets/css/plus_style.css',
-    '@/assets/css/slick.css',
-    '@/assets/css/slick-carousels.css',
   ],
   
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

@@ -1,96 +1,91 @@
 <template>
   <div>
     <common-header />
-    <div id="mainArea" class="pbMainArea business">
-      <div id="area0" class="pbArea ">
-        <div class="pbNested ">
-          <div class="mv-container">
-            <ul class="slide">
-              <ssr-carousel
-                :slides-per-page="1"
-                :center="true"
-                :peek="50"
-                loop
-                :show-dots="topBanner.pageInfo.totalCnt > 1 ? true : false"
-                show-arrows
-              >
-                <li v-for="(slide, index) in topBanner.list" :key="index" :index="index + 1">
-                  <a :href="slide.url" :target="slide.transitionDev.key === '1' ? '_self' : '_blank'">
-                    <img class="slide-image" :alt="slide.img.desc" :src="slide.img.url">
-                  </a>
-                </li>
-              </ssr-carousel>
-            </ul>
-          </div>
-          <!-- 検索モジュール -->
-          <search-module :area="area.Data" />
-          <!-- 各カルーセル -->
-          <carousels :theme="theme" :sightseeing="sightseeing" :advertisement="advertisement" :coupon="coupon" />
-          <!-- 都道府県から探す -->
-          <div class="area__container">
-            <div class="title">
-                <h2 class="marker-under">都道府県から探す</h2>
-            </div>
-            <div class="jp-area">
-              <div v-for="pre in prefecture.list" :key="pre.topics_id">
-                <input
-                  :id="$AREA_TAB_NAME[pre.area.key]"
-                  v-model="pref"
-                  v-bind:checked="{'true': pref_show == $AREA_TAB_NAME[pre.area.key]}"
-                  :value="$AREA_TAB_NAME[pre.area.key]"
-                  type="radio"
-                  name="12area"
-                  @click="prefClick(pre.area.key)"
-                >
-                <label :for="$AREA_TAB_NAME[pre.area.key]">{{ pre.area.label }}</label>
-              </div>
-            </div>
-            <div class="prefectures">
-              <div v-for="pre in prefecture.list" :key="pre.topics_id">
-                <div v-if="pref_show == $AREA_TAB_NAME[pre.area.key]" :class="$AREA_TAB_NAME[pre.area.key] + ' prefecture-col'">
-                  <div v-for="(code, index) in pre.code" :key="index" :index="index + 1" class="prefecture">
-                    <a :href="tvg_url + $AREA_EN_NAME[code.key] + '/pr' + code.key">
-                      <img :alt="pre.img[index].desc" :src="pre.img[index].url">
-                    </a>
-                  </div>
-                </div>
-                <div v-else-if="pref_show != $AREA_TAB_NAME[pre.area.key]" :class="$AREA_TAB_NAME[pre.area.key] + ' prefecture-col'" style="display: none;">
-                  <div v-for="(code, index) in pre.code" :key="index" :index="index + 1" class="prefecture">
-                    <a :href="tvg_url + $AREA_EN_NAME[code.key] + '/pr' + code.key">
-                      <img :alt="pre.img[index].desc" :src="pre.img[index].url">
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- その他リンク ここから -->
-          <div v-if="otherLink.pageInfo.totalCnt != 0" class="online-insurance__container">
-            <div class="title">
-              <h2 class="marker-under">{{ otherLink.list.contents_type_ext_col_01 }}</h2>
-              <div class="btn--more pc-only"><a href="https://www.tavigator.co.jp/insurance/policy.html">{{ otherLink.list.contents_type_ext_col_02 }}</a></div>
-            </div>
-            <ul>
-              <li v-for="(link, index) in otherLink.list" :key="index">
-                <a :href="link.url" :target="link.transitionDev.key === '1' ? '_self' : '_blank'">
-                  {{ link.name }}
-                </a>
-              </li>
-            </ul>
-            <div class="view-more hotel-sec__more sp-only"><a href="https://www.tavigator.co.jp/insurance/policy.html">{{ otherLink.details.listTitle }}</a></div>
-          </div>
-          <div class="container">
-            <div class="page-sec page-container hotel-sec">
-              <div class="hotel-sec__head">
-                <p class="heading--underline hotel-sec__title">
-                  <span></span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- その他リンク ここまで -->
-        </div>
+    <div id="main-contents">
+      <div class="mv-container">
+        <ul class="slide">
+          <ssr-carousel
+            :slides-per-page="1"
+            :center="true"
+            :peek="300"
+            loop
+            :show-dots="topBanner.pageInfo.totalCnt > 1 ? true : false"
+            show-arrows
+            v-model="page"
+            >
+            <!-- :autoplay-delay="5" -->
+            <li v-for="(slide, index) in topBanner.list" :key="index" :index="index + 1" :class="{ active: page === index }">
+              <a :href="slide.url" :target="slide.transitionDev.key === '1' ? '_self' : '_blank'">
+                <img class="slide-image" :alt="slide.img.desc" :src="slide.img.url">
+              </a>
+            </li>
+          </ssr-carousel>
+        </ul>
       </div>
+      <div class="container">
+        <!-- 検索モジュール -->
+        <search-module :area="area.Data" />
+        <!-- 各カルーセル -->
+        <carousels :theme="theme" :sightseeing="sightseeing" :advertisement="advertisement" :coupon="coupon" />
+        <!-- 都道府県から探す -->
+        <div class="area__container">
+          <div class="title">
+            <h2 class="marker-under">都道府県から探す</h2>
+          </div>
+          <div class="jp-area">
+            <div v-for="pre in prefecture.list" :key="pre.topics_id">
+              <input
+              :id="$AREA_TAB_NAME[pre.area.key]"
+              v-model="pref"
+              v-bind:checked="{'true': pref_show == $AREA_TAB_NAME[pre.area.key]}"
+              :value="$AREA_TAB_NAME[pre.area.key]"
+              type="radio"
+              name="12area"
+              @click="prefClick(pre.area.key)"
+              >
+              <label :for="$AREA_TAB_NAME[pre.area.key]">{{ pre.area.label }}</label>
+            </div>
+          </div>
+          <div class="prefectures">
+            <div v-for="pre in prefecture.list" :key="pre.topics_id">
+              <div v-if="pref_show == $AREA_TAB_NAME[pre.area.key]" :class="$AREA_TAB_NAME[pre.area.key] + ' prefecture-col'">
+                <div v-for="(code, index) in pre.code" :key="index" :index="index + 1" class="prefecture">
+                  <a :href="tvg_url + $AREA_EN_NAME[code.key] + '/pr' + code.key">
+                    <img :alt="pre.img[index].desc" :src="pre.img[index].url">
+                  </a>
+                </div>
+              </div>
+              <div v-else-if="pref_show != $AREA_TAB_NAME[pre.area.key]" :class="$AREA_TAB_NAME[pre.area.key] + ' prefecture-col'" style="display: none;">
+                <div v-for="(code, index) in pre.code" :key="index" :index="index + 1" class="prefecture">
+                  <a :href="tvg_url + $AREA_EN_NAME[code.key] + '/pr' + code.key">
+                    <img :alt="pre.img[index].desc" :src="pre.img[index].url">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- その他リンク ここから -->
+        <div v-if="otherLink.pageInfo.totalCnt != 0" class="online-insurance__container">
+          <div class="title">
+            <h2 class="marker-under">{{ otherLink.list.contents_type_ext_col_01 }}</h2>
+            <div class="btn--more pc-only"><a href="https://www.tavigator.co.jp/insurance/policy.html">{{ otherLink.list.contents_type_ext_col_02 }}</a></div>
+          </div>
+          <ul>
+            <li v-for="(link, index) in otherLink.list" :key="index">
+              <a :href="link.url" :target="link.transitionDev.key === '1' ? '_self' : '_blank'">
+                {{ link.name }}
+              </a>
+            </li>
+          </ul>
+          <div class="view-more hotel-sec__more sp-only"><a href="https://www.tavigator.co.jp/insurance/policy.html">{{ otherLink.details.listTitle }}</a></div>
+        </div>
+        <!-- その他リンク ここまで -->
+      </div>
+        <div class="ad-img">
+            <!-- <img class="pc-only" src="" width="1980" height="218" alt="広告">
+            <img class="sp-only" src="" width="375" height="150" alt="広告"> -->
+        </div>
     </div>
     <common-footer/>
   </div>
@@ -114,9 +109,6 @@ const tvgApi = axios.create({
 async function getShisetsuImg(data) {
   const shisetsuDetailUrl = process.env.SHISETSU_DETAIL_API
   return await tvgApi.get(shisetsuDetailUrl, { params: { shisetsu: data } }).then((shisetsuData) => {
-    if (!shisetsuData.data.Data.Hotel.ShisetsuImage) {
-      return '/assets/images/noimage.jpg'
-    }
     return shisetsuData.data.Data.Hotel.ShisetsuImage
   }).catch((err) => {
     console.log(err.message)
@@ -174,7 +166,25 @@ export default {
       page: 0,
       tvg_url: process.env.TVG_URL,
       pref: 'hokkaido-tohoku',
-      pref_show: 'hokkaido-tohoku'
+      pref_show: 'hokkaido-tohoku',
+      // slickの設定
+      slickOptions: {
+        autoplay: true,
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 6,
+        slidesToScroll: 3,
+        responsive: [
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 2
+            }
+          }
+        ]
+      }
     }
   },
   head: {
@@ -202,9 +212,16 @@ export default {
     ]
   },
   methods: {
-    prefClick(num) {
-      this.pref = this.$AREA_TAB_NAME[num]
-      this.pref_show = this.$AREA_TAB_NAME[num]
+    next() {
+      this.$refs.slick.next()
+    },
+    prev() {
+      this.$refs.slick.prev()
+    },
+    reInit() {
+      this.$nextTick(() => {
+        this.$refs.slick.reSlick()
+      })
     }
   }
 }
@@ -213,6 +230,7 @@ export default {
 <style scoped>
 
 @import "assets/css/top.css";
+@import "assets/css/slick-theme.css";
 
 .container {
   width: 100%;

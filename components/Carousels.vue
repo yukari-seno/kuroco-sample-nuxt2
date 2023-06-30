@@ -10,6 +10,7 @@
         <ssr-carousel
           :slides-per-page="4"
           show-arrows
+          peek="40"
           :peek-right='40'
         >
           <div
@@ -24,35 +25,48 @@
             <slide :index="index + 1">
               <div class="theme-card">
                 <div v-if="slide.shisetsuImage" class="theme-card__view">
-                  <img
-                    :src="slide.shisetsuImage"
+                  <div class="card-image">
+                    <img
+                    :src="slide.shisetsuImage ? slide.shisetsuImage : '/assets/images/noimage.jpg'"
                     class="lazyload"
                     loading="lazy"
-                  >
+                    >
+                    <p>{{ slide.text }}</p>
+                  </div>
                 </div>
                 <div v-else-if="slide.backgroungColoer" class="theme-card__view">
-                  <div
+                  <div class="card-image">
+                    <div
                     :style="'background-color:#' + slide.backgroungColoer + ';'"
                     class="lazyload"
                     loading="lazy"
-                  ></div>
+                    >
+                      <p>{{ slide.text }}</p>
+                    </div>
+                  </div>
                 </div>
                 <div v-else>
                   <div class="theme-card__view pc-only">
-                    <img
+                    <div class="card-image">
+                      <div>{{ slide.text }}</div>
+                      <img
                       :src="slide.img.url"
                       :alt="slide.img.desc"
                       class="lazyload"
                       loading="lazy"
-                    >
+                      >
+                    </div>
                   </div>
                   <div class="theme-card__view sp-only">
-                    <img
-                      :src="slide.img_SP.url"
-                      :alt="slide.img_SP.desc"
-                      class="lazyload"
-                      loading="lazy"
-                    >
+                    <div class="card-image">
+                      <div>{{ slide.text }}</div>
+                      <img
+                        :src="slide.img_SP.url"
+                        :alt="slide.img_SP.desc"
+                        class="lazyload"
+                        loading="lazy"
+                      >
+                    </div>
                   </div>
                 </div>
                 <div class="theme-card__block">

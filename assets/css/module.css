@@ -567,9 +567,15 @@ body.listview select.form-charge,
 .select-choice {
     display: flex;
     align-items: center;
-    gap: 16px;
     color: #0066C0;
     font-weight: 500;
+}
+.select-choice p,
+.select-choice i {
+    cursor: pointer;
+}
+.select-choice i {
+    padding-left: 16px;
 }
 .select-choice.open i {
     transform:rotateX(180deg);

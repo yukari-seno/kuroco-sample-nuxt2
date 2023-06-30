@@ -3,18 +3,6 @@ let checkIn = document.getElementById('srh-param-checkin');
 // チェックアウト日
 let checkOut = document.getElementById('srh-param-checkout');
 
-// ロードイベント
-window.onload = function(){ 
-    if (checkIn.value == "") {
-        setCheckin_Out_Date();
-    }
-
-    // 日付・人数を指定しないチェックボックスチェンジイベント発火
-    if(document.getElementById("undecided").checked) {
-        document.getElementById("undecided").dispatchEvent(new Event('change'));
-    }
-}
-
 // 日付整形
 function getDate(date) {
     let today = date;
