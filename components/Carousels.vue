@@ -31,7 +31,7 @@
                     class="lazyload"
                     loading="lazy"
                     >
-                    <p>{{ slide.text }}</p>
+                    <p :style="'color:#' + slide.textColoer + ';'">{{ slide.text }}</p>
                   </div>
                 </div>
                 <div v-else-if="slide.backgroungColoer" class="theme-card__view">
@@ -41,14 +41,14 @@
                     class="lazyload"
                     loading="lazy"
                     >
-                      <p>{{ slide.text }}</p>
+                      <p :style="'color:#' + slide.textColoer + ';'">{{ slide.text }}</p>
                     </div>
                   </div>
                 </div>
                 <div v-else>
                   <div class="theme-card__view pc-only">
                     <div class="card-image">
-                      <div>{{ slide.text }}</div>
+                      <p :style="'color:#' + slide.textColoer + ';'">{{ slide.text }}</p>
                       <img
                       :src="slide.img.url"
                       :alt="slide.img.desc"
@@ -59,7 +59,7 @@
                   </div>
                   <div class="theme-card__view sp-only">
                     <div class="card-image">
-                      <div>{{ slide.text }}</div>
+                      <p :style="'color:#' + slide.textColoer + ';'">{{ slide.text }}</p>
                       <img
                         :src="slide.img_SP.url"
                         :alt="slide.img_SP.desc"
@@ -268,3 +268,14 @@ export default {
   }
 }
 </script>
+
+<style>
+  .card-image {
+    position: relative;
+  }
+  .card-image p {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+  }
+</style>
