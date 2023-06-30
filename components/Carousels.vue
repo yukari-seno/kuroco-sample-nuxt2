@@ -29,10 +29,10 @@
           >
             <slide :index="index + 1">
               <div class="theme-card">
-                <div v-if="slide.shisetsuImage" class="theme-card__view">
+                <div v-if="slide.hasOwnProperty('shisetsuImage')" class="theme-card__view">
                   <div class="card-image">
                     <img
-                    :src="slide.shisetsuImage ? slide.shisetsuImage : '/assets/images/noimage.jpg'"
+                    :src="slide.shisetsuImage ?? noImgSrc"
                     class="lazyload"
                     loading="lazy"
                     >
@@ -297,6 +297,11 @@ export default {
     sightseeing: Object,
     advertisement: Object,
     coupon: Object
+  },
+  computed: {
+    noImgSrc () {
+      return require('~/assets/images/noimage.jpg')
+    }
   }
 }
 </script>
