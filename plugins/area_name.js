@@ -58,29 +58,9 @@ const AREA_TAB_NAME = {
   '07': 'kinki',
   '08': 'chugoku',
   '09': 'shikoku',
-  '10': 'kyushu-okinawa',
+  '10': 'kyushu-okinawa'
 }
-
-const POPULAR_NAME = {
-  '1': { code: 'su1301', name: 'お台場・銀座' },
-  '2': { code: 'ms260101', name: '京都駅周辺' },
-  '3': { code: 'ms270101', name: '梅田' },
-  '4': { code: 'su2205', name: '南伊豆' },
-  '5': { code: 'su2203', name: '熱海' },
-  '6': { code: 'su1406', name: '箱根' },
-  '7': { code: 'su0101', name: '札幌' },
-  '8': { code: 'ms040102', name: '仙台' },
-  '9': { code: 'ms140101', name: '横浜' },
-  '10': { code: 'su2301', name: '名古屋' },
-  '11': { code: 'ms280101', name: '神戸' },
-  '12': { code: 'ms400101', name: '福岡' },
-  '13': { code: 'su4701', name: '沖縄' },
-  '14': { code: 'ms120105', name: '東京ディズニーリゾート（R）' },
-  '15': { code: 'ms270205', name: 'ユニバーサル・スタジオ・ジャパン' }
-}
-
 export default (context, inject) => {
   inject('AREA_EN_NAME', AREA_EN_NAME)
   inject('AREA_TAB_NAME', AREA_TAB_NAME)
-  inject('POPULAR_NAME', POPULAR_NAME)
 }

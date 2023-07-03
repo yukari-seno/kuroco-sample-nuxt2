@@ -118,23 +118,6 @@ import CommonFooter from '~/components/CommonFooter'
 import SearchModule from '~/components/SearchModule'
 import Carousels from '~/components/Carousels'
 
-// TVGAPI専用のエンドポイントのインスタンス作成
-const tvgApi = axios.create({
-  baseURL: process.env.TVG_API,
-  headers: { 'Content-Type': 'application/json' },
-  responseType: 'json'
-})
-
-// TVG施設詳細API
-async function getShisetsuImg(data) {
-  const shisetsuDetailUrl = process.env.SHISETSU_DETAIL_API
-  return await tvgApi.get(shisetsuDetailUrl, { params: { shisetsu: data } }).then((shisetsuData) => {
-    return shisetsuData.data.Data.Hotel.ShisetsuImage
-  }).catch((err) => {
-    console.log(err.message)
-  })
-}
-
 export default {
   components: {
     CommonHeader,
@@ -142,18 +125,29 @@ export default {
     SearchModule,
     Carousels
   },
-  async asyncData ({ $axios }) {
-    const areaMasterUrl = process.env.AREA_MASTER_API
+  async asyncData ({ $axios, $KUROCO_API_URL, $TVG_URL }) {
+    // TVGAPI専用のエンドポイントのインスタンス作成
+    const tvgApi = axios.create({
+      baseURL: $TVG_URL.API_URL,
+      headers: { 'Content-Type': 'application/json' },
+      responseType: 'json'
+    })
+    const areaMasterUrl = $TVG_URL.AREA_MASTER_API
     const [topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, area] = await Promise.all([
       // トップバナー取得
-      $axios.$get(process.env.KUROCO_BANNER_API),
+      $axios.$get($KUROCO_API_URL.BANNER_API),
       // テーマ・目的別に宿を探すリスト
-      $axios.$get(process.env.KUROCO_THEMA_API).then(async (data) => {
+      $axios.$get($KUROCO_API_URL.THEMA_API).then(async (data) => {
         let cnt = 0
         for (const element of data.list) {
           if (element.shisetsu !== '') {
             // TVG施設詳細API
-            data.list[cnt].shisetsuImage = await getShisetsuImg(element.shisetsu).then((data) => {
+            data.list[cnt].shisetsuImage = await tvgApi.get($TVG_URL.SHISETSU_DETAIL_API,
+              { params: { shisetsu: data } }).then((shisetsuData) => {
+              return shisetsuData.data.Data.Hotel.ShisetsuImage
+            }).catch((err) => {
+              console.log(err.message)
+            }).then((data) => {
               return data
             })
           }
@@ -162,15 +156,15 @@ export default {
         return data
       }),
       // おすすめ観光ガイド取得
-      $axios.$get(process.env.KUROCO_SHIGHTSEEING_API),
+      $axios.$get($KUROCO_API_URL.SHIGHTSEEING_API),
       // 広告PR取得
-      $axios.$get(process.env.KUROCO_ADVERTISEMENT_API),
+      $axios.$get($KUROCO_API_URL.ADVERTISEMENT_API),
       // クーポン取得
-      $axios.$get(process.env.KUROCO_COUPON_API),
+      $axios.$get($KUROCO_API_URL.COUPON_API),
       // 都道府県から探す取得
-      $axios.$get(process.env.KUROCO_PREFECTURE_API),
+      $axios.$get($KUROCO_API_URL.PREFECTURE_API),
       // その他リンク取得
-      $axios.$get(process.env.KUROCO_OTHERLINK_API),
+      $axios.$get($KUROCO_API_URL.OTHERLINK_API),
       // TVGエリアマスタ情報API
       tvgApi.get(areaMasterUrl).then((area) => {
         return area.data
@@ -184,7 +178,7 @@ export default {
   data() {
     return {
       page: 0,
-      tvg_url: process.env.TVG_URL,
+      tvg_url: this.$TVG_URL,
       pref: 'hokkaido-tohoku',
       pref_show: 'hokkaido-tohoku'
     }

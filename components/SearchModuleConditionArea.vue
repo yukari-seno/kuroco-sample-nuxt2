@@ -100,33 +100,6 @@
                         </ul>
                       </div>
                     </div>
-                    <div
-                      id="area_select-popular"
-                      class="tab-content__pane"
-                      data-tab-cts="area_select"
-                    >
-                      <div class="area-select-popular">
-                        <ul class="area-select-popular__items">
-                          <li
-                            v-for="popular in $POPULAR_NAME"
-                            :key="popular.code"
-                            class="area-select-popular__item"
-                          >
-                            <input
-                              :id="'popular_' + popular.code.substr(2)"
-                              type="radio"
-                              name="area_select"
-                              :value="popular.code"
-                              class="form-radio-input none"
-                              @click="areaSelect(popular)"
-                            >
-                            <button type="button" class="area-select-popular__btn" :value="'popular_' + popular.code.substr(2)">
-                              {{ popular.name }}
-                            </button>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
