@@ -53,32 +53,32 @@
             <h2 class="marker-under">都道府県から探す</h2>
           </div>
           <div class="jp-area">
-            <div v-for="pre in prefecture.list" :key="pre.topics_id">
+            <div v-for="(pre, index) in prefecture" :key="index">
               <input
-              :id="$AREA_TAB_NAME[pre.area.key]"
+              :id="$AREA_TAB_NAME[pre.category.ext_col_01]"
               v-model="pref"
-              v-bind:checked="{'true': pref_show == $AREA_TAB_NAME[pre.area.key]}"
-              :value="$AREA_TAB_NAME[pre.area.key]"
+              v-bind:checked="{'true': pref_show == $AREA_TAB_NAME[pre.category.ext_col_01]}"
+              :value="$AREA_TAB_NAME[pre.category.ext_col_01]"
               type="radio"
               name="12area"
-              @click="prefClick(pre.area.key)"
+              @click="prefClick(pre.category.ext_col_01)"
               >
-              <label :for="$AREA_TAB_NAME[pre.area.key]">{{ pre.area.label }}</label>
+              <label :for="$AREA_TAB_NAME[pre.category.ext_col_01]">{{ pre.category.category_nm }}</label>
             </div>
           </div>
           <div class="prefectures">
-            <div v-for="pre in prefecture.list" :key="pre.topics_id">
-              <div v-if="pref_show == $AREA_TAB_NAME[pre.area.key]" :class="$AREA_TAB_NAME[pre.area.key] + ' prefecture-col'">
-                <div v-for="(code, index) in pre.code" :key="index" :index="index + 1" class="prefecture">
-                  <a :href="tvg_url + $AREA_EN_NAME[code.key] + '/pr' + code.key">
-                    <img :alt="pre.img[index].desc" :src="pre.img[index].url">
+            <div v-for="(area, key) in prefecture" :key="key">
+              <div v-if="pref_show == $AREA_TAB_NAME[area.category.ext_col_01]" :class="$AREA_TAB_NAME[area.category.ext_col_01] + ' prefecture-col'">
+                <div v-for="(pre, index) in area.list" :key="index" :index="index + 1" class="prefecture">
+                  <a :href="tvg_url + $AREA_EN_NAME[pre.code.key] + '/pr' + pre.code.key">
+                    <img :alt="pre.img.desc" :src="pre.img.url">
                   </a>
                 </div>
               </div>
-              <div v-else-if="pref_show != $AREA_TAB_NAME[pre.area.key]" :class="$AREA_TAB_NAME[pre.area.key] + ' prefecture-col'" style="display: none;">
-                <div v-for="(code, index) in pre.code" :key="index" :index="index + 1" class="prefecture">
-                  <a :href="tvg_url + $AREA_EN_NAME[code.key] + '/pr' + code.key">
-                    <img :alt="pre.img[index].desc" :src="pre.img[index].url">
+              <div v-else-if="pref_show != $AREA_TAB_NAME[area.category.ext_col_01]" :class="$AREA_TAB_NAME[area.category.ext_col_01] + ' prefecture-col'" style="display: none;">
+                <div v-for="(pre, index) in area.list" :key="index" :index="index + 1" class="prefecture">
+                  <a :href="tvg_url + $AREA_EN_NAME[pre.code.key] + '/pr' + pre.code.key">
+                    <img :alt="pre.img.desc" :src="pre.img.url">
                   </a>
                 </div>
               </div>
