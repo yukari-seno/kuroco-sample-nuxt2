@@ -1,6 +1,13 @@
 const webpack = require('webpack')
 
 require('dotenv').config();
+const {KUROCO_BANNER_API} = process.env;
+const {KUROCO_THEMA_API} = process.env;
+const {KUROCO_SHIGHTSEEING_API} = process.env;
+const {KUROCO_ADVERTISEMENT_API} = process.env;
+const {KUROCO_COUPON_API} = process.env;
+const {KUROCO_PREFECTURE_API} = process.env;
+const {KUROCO_OTHERLINK_API} = process.env;
 const {TVG_URL} = process.env;
 const {TVG_API} = process.env;
 const {AREA_MASTER_API} = process.env;
@@ -8,7 +15,7 @@ const {SHISETSU_DETAIL_API} = process.env;
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
+  ssr: true,
   
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -58,7 +65,7 @@ export default {
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: false,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -93,6 +100,13 @@ export default {
     TVG_URL,
     TVG_API,
     AREA_MASTER_API,
-    SHISETSU_DETAIL_API
+    SHISETSU_DETAIL_API,
+    KUROCO_BANNER_API,
+    KUROCO_THEMA_API,
+    KUROCO_SHIGHTSEEING_API,
+    KUROCO_ADVERTISEMENT_API,
+    KUROCO_COUPON_API,
+    KUROCO_PREFECTURE_API,
+    KUROCO_OTHERLINK_API
   }
 }

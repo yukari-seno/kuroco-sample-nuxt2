@@ -146,9 +146,9 @@ export default {
     const areaMasterUrl = process.env.AREA_MASTER_API
     const [topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, area] = await Promise.all([
       // トップバナー取得
-      $axios.$get('/rcms-api/5/banner'),
+      $axios.$get(process.env.KUROCO_BANNER_API),
       // テーマ・目的別に宿を探すリスト
-      $axios.$get('/rcms-api/5/theme').then(async (data) => {
+      $axios.$get(process.env.KUROCO_THEMA_API).then(async (data) => {
         let cnt = 0
         for (const element of data.list) {
           if (element.shisetsu !== '') {
@@ -162,15 +162,15 @@ export default {
         return data
       }),
       // おすすめ観光ガイド取得
-      $axios.$get('/rcms-api/5/sightseeing'),
+      $axios.$get(process.env.KUROCO_SHIGHTSEEING_API),
       // 広告PR取得
-      $axios.$get('/rcms-api/5/advertisement'),
+      $axios.$get(process.env.KUROCO_ADVERTISEMENT_API),
       // クーポン取得
-      $axios.$get('/rcms-api/5/coupon'),
+      $axios.$get(process.env.KUROCO_COUPON_API),
       // 都道府県から探す取得
-      $axios.$get('/rcms-api/5/prefecture'),
+      $axios.$get(process.env.KUROCO_PREFECTURE_API),
       // その他リンク取得
-      $axios.$get('/rcms-api/5/otherLink'),
+      $axios.$get(process.env.KUROCO_OTHERLINK_API),
       // TVGエリアマスタ情報API
       tvgApi.get(areaMasterUrl).then((area) => {
         return area.data
