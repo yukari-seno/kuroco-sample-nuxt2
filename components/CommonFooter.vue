@@ -44,7 +44,7 @@
         <p>たびゲーターは「JTB」、「Zホールディングス」、「ソフトバンクグループ」のグループ会社です。<br>（ヤフー（株）はZホールディングス（株）に商号変更し、持株会社になりました）</p>
       </div>
       <div class="ft-secondary">
-        <img src="~/assets/images/ft_image.jpg" width="150" height="98" alt="dummy">
+        <img src="~/assets/images/ft_image.jpg" width="150" height="98" alt="">
         <div class="ft-secondary-text">
           <p>たびゲーターはISMS（情報セキュリティマネジメントシステム）の国際規格「ISO/IEC 27001:2013」と<br>国内規格「JIS Q 27001:2014」の認証を取得しています。</p>
           <div class="btn--more pc-only"><a href="https://www.tavigator.co.jp/policy/isms.html">詳しくはこちら</a></div>

@@ -39,7 +39,7 @@
                 <nav class="header-menu pc-only">
                     <div class="header__container">
                         <ul class="header-menu__items">
-                            <li class="header-menu__item header-menu__lists-btn" target="_self" title="国内旅行">国内旅行<i class="fa-solid fa-angle-down"></i>
+                            <li class="header-menu__item header-menu__lists-btn" title="国内旅行">国内旅行<i class="fa-solid fa-angle-down"></i>
                                 <ul>
                                     <li><a href="https://hotel.tavigator.co.jp/search/" target="_self" title="国内旅行_国内旅行" class="header-submenu__link">国内旅行_国内旅行</a></li>
                                     <li><a href="https://mdp.tour-list.com/dp/tavigator/" target="_self" title="航空券+宿泊_国内旅行" class="header-submenu__link">航空券+宿泊_国内旅行</a></li>
