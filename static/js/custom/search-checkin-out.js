@@ -3,39 +3,6 @@ let checkIn = document.getElementById('srh-param-checkin');
 // チェックアウト日
 let checkOut = document.getElementById('srh-param-checkout');
 
-// ロードイベント
-window.onload = function(){ 
-    if (checkIn.value == "") {
-        setCheckin_Out_Date();
-    }
-
-    // 日付・人数を指定しないチェックボックスチェンジイベント発火
-    if(document.getElementById("undecided").checked) {
-        document.getElementById("undecided").dispatchEvent(new Event('change'));
-    }
-}
-
-// 日付整形
-function getDate(date) {
-    let today = date;
-    let y = today.getFullYear();
-    let m = ("00" + (today.getMonth()+1)).slice(-2);
-    let d = ("00" + (today.getDate())).slice(-2);
-    return today = y + '/' + m + '/' + d;
-}
-
-// 初期値設定
-function setCheckin_Out_Date() {
-    // チェックイン・チェックアウト日の初期値に本日、本日+1日を設定
-    let today = new Date();
-    today = getDate(today);
-    let tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    tomorrow = getDate(tomorrow);
-    checkIn.setAttribute("value", today);
-    checkOut.setAttribute("value", tomorrow);
-}
-
 // カレンダーチェックイン日反映
 checkIn.addEventListener("change", (function(e) {
     let checkInValue;

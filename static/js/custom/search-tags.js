@@ -1,8 +1,3 @@
-// ロードイベント
-window.onload = function(){ 
-    tagsChange();
-}
-
 function tagsChange() {
     let tags = document.getElementsByClassName('srh-param-detail-group__items');
     let tagsAry = Array.from(tags);

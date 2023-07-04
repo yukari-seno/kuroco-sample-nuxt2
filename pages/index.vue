@@ -1,157 +1,205 @@
 <template>
   <div>
     <common-header />
-    <div id="mainArea" class="pbMainArea business">
-      <div id="area0" class="pbArea ">
-        <div class="pbNested ">
-          <div id="pbBlock3255746" class="listType06R pbNested pbNestedWrapper">
-            <div class="pbBlock pbBlockBase">
-              <div>
-                <ul>
-                  <li>
-                    <a href="/help/oshirase.html">お知らせ一覧</a>
-                  </li>
-                </ul>
-              </div>
+    <div id="main-contents">
+      <div class="mv-container">
+        <ul class="slide">
+          <ssr-carousel
+            :slides-per-page="1"
+            :center="true"
+            :peek='400'
+            loop
+            :show-dots="topBanner.pageInfo.totalCnt > 1 ? true : false"
+            show-arrows
+            v-model="page"
+            :autoplay-delay="5"
+            :responsive='[
+            {
+              maxWidth: 1400,
+              peek: 300,
+            },
+            {
+              maxWidth: 1024,
+              peek: 200,
+            },
+            {
+              maxWidth: 768,
+              peek: 50,
+            }
+          ]'
+            >
+            <li v-for="(slide, index) in topBanner.list" :key="index" :index="index + 1" :class="{ active: page === index }">
+              <a :href="slide.url" :target="slide.transitionDev.key === '1' ? '_self' : '_blank'">
+                <img class="slide-image" :alt="slide.img.desc" :src="slide.img.url">
+              </a>
+            </li>
+            <template #back-arrow>
+              <img class="ssr-carousel-back-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
+            </template>
+            <template #next-arrow>
+              <img class="ssr-carousel-next-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
+            </template>
+          </ssr-carousel>
+        </ul>
+      </div>
+      <div class="container">
+        <!-- 検索モジュール -->
+        <search-module :area="area.Data" />
+        <!-- 各カルーセル -->
+        <carousels :theme="theme" :sightseeing="sightseeing" :advertisement="advertisement" :coupon="coupon" />
+        <!-- 都道府県から探す -->
+        <div class="area__container">
+          <div class="title">
+            <h2 class="marker-under">都道府県から探す</h2>
+          </div>
+          <div class="jp-area">
+            <div v-for="(pre, index) in prefecture" :key="index">
+              <input
+              :id="$AREA_TAB_NAME[pre.category.ext_col_01]"
+              v-model="pref"
+              v-bind:checked="{'true': pref_show == $AREA_TAB_NAME[pre.category.ext_col_01]}"
+              :value="$AREA_TAB_NAME[pre.category.ext_col_01]"
+              type="radio"
+              name="12area"
+              @click="prefClick(pre.category.ext_col_01)"
+              >
+              <label :for="$AREA_TAB_NAME[pre.category.ext_col_01]">{{ pre.category.category_nm }}</label>
             </div>
           </div>
-          <div id="pbBlock3255714" class="information pbNested pbNestedWrapper">
-            <div class="pbNested ">
-              <div id="pbBlock3688296" class="pbNested pbNestedWrapper">
-                <div class="pbBlock pbBlockBase">
-                  <div>
-                    <div style="text-align: left;">
-                      <p v-for="n in response.details.top_link" :key="n.slag">
-                        <a :href="n.url">{{ n.title }}</a>
-                      </p>
-                    </div>
-                  </div>
+          <div class="prefectures">
+            <div v-for="(area, key) in prefecture" :key="key">
+              <div v-if="pref_show == $AREA_TAB_NAME[area.category.ext_col_01]" :class="$AREA_TAB_NAME[area.category.ext_col_01] + ' prefecture-col'">
+                <div v-for="(pre, index) in area.list" :key="index" :index="index + 1" class="prefecture">
+                  <a :href="tvg_url + $AREA_EN_NAME[pre.code.key] + '/pr' + pre.code.key">
+                    <img :alt="pre.img.desc" :src="pre.img.url">
+                  </a>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="container">
-            <ssr-carousel v-model="page" loop>
-              <div v-for="(slide, index) in response.details.main_img" :key="index" :index="index + 1">
-                <img class="slide-image" :name="slide.desc" :src="slide.url" />
-              </div>
-            </ssr-carousel>
-            <div class="pagination-container">
-              <div v-for="(slide, index) in response.details.main_img" :key="index" class="pagination" :class="{ active: page === index }" @click="pagination(index)" />
-            </div>
-          </div>
-          <div class="searchbox page-sec clearlayout">
-            <search-module />
-          </div>
-          <div class="hotel-recently page-sec page-container hotel-sec" id="pbBlock3560920">
-            <div class="hotel-recently__head hotel-sec__head">
-              <p class="hotel-recently__title heading--underline hotel-sec__title"><span>テーマ・目的別に宿を探す</span></p>
-            </div>
-          </div>
-
-          <div class="hotel-recently__body slider-wrap idling hotel-sec__body no-slider-progress">
-            <div class="hotel-recently__list hotel-sec-slider swiper swiper-container swiper-initialized
-            swiper-horizontal swiper-pointer-events swiper-free-mode swiper-backface-hidden is-ready"
-            data-slider-items="{'freeMode':true,'navigation':false,'pagination':false,'breakpoints':{'0':{'slidesPerView':1.175},'510':{'slidesPerView':1.7},'740':{'slidesPerView':2.4},'1025':{'slidesPerView':3.4}}}">
-              <div id="tvgRecentHotel" class="hotel-recently__items hotel-sec-slider__items swiper-wrapper slick-initialized slick-slider">
-                <div class="slick-list draggable">
-                  <div class="slick-track" style="opacity: 1; width: 278px; transform: translate3d(0px, 0px, 0px);">
-                    <div v-for="(slide, index) in promotion.list"
-                    :key="index"
-                    class="hotel-recently__item hotel-sec-slider__item swiper-slide slick-slide slick-current slick-active"
-                    data-slick-index="0"
-                    aria-hidden="false"
-                    tabindex="0"
-                    style="width: 263px;">
-                      <div class="hotelcard">
-                        <div class="hotel-card__view">
-                          <img :src="slide.imageurl.url" :alt="slide.imageurl.desc">
-                        </div>
-                        <div class="hotel-card__block">
-                          <div class="hotel-card__desc">
-                            <p class="hotel-card__title">
-                              <a :href="slide.url" :alt="slide.imageurl.desc" class="hotel-card__link" tabindex="0">{{ slide.caption }}</a>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div v-else-if="pref_show != $AREA_TAB_NAME[area.category.ext_col_01]" :class="$AREA_TAB_NAME[area.category.ext_col_01] + ' prefecture-col'" style="display: none;">
+                <div v-for="(pre, index) in area.list" :key="index" :index="index + 1" class="prefecture">
+                  <a :href="tvg_url + $AREA_EN_NAME[pre.code.key] + '/pr' + pre.code.key">
+                    <img :alt="pre.img.desc" :src="pre.img.url">
+                  </a>
                 </div>
               </div>
-            </div>
-            <div class="swiper-ctrl">
-              <div class="swiper-button swiper-button-prev">
-              </div>
-              <div class="swiper-button swiper-button-next"></div>
-              <div class="swiper-pagination"></div>
-            </div>
-            <div class="slider-progress ready">
-              <span class="slider-progress__handle" style="width:100%;transform:translate3d(NaNpx,0,0);"></span>
             </div>
           </div>
         </div>
+        <!-- その他リンク ここから -->
+        <div v-if="otherLink.pageInfo.totalCnt != 0" class="online-insurance__container">
+          <div class="title">
+            <h2 class="marker-under">{{ otherLink.list[0].contents_type_ext_col_01 }}</h2>
+            <div class="btn--more pc-only"><a href="https://www.tavigator.co.jp/insurance/policy.html">{{ otherLink.list[0].contents_type_ext_col_02 }}</a></div>
+          </div>
+          <ul>
+            <li v-for="(link, index) in otherLink.list" :key="index">
+              <a :href="link.url" :target="link.transitionDev.key === '1' ? '_self' : '_blank'">
+                {{ link.name }}
+              </a>
+            </li>
+          </ul>
+          <div class="view-more hotel-sec__more sp-only"><a :href="otherLink.list[0].contents_type_ext_col_03">{{ otherLink.list[0].contents_type_ext_col_02 }}</a></div>
+        </div>
+        <!-- その他リンク ここまで -->
       </div>
+        <div class="ad-img">
+          <!-- 二次開発移行追加する可能性あり -->
+            <!-- <img class="pc-only" src="" width="1980" height="218" alt="広告">
+            <img class="sp-only" src="" width="375" height="150" alt="広告"> -->
+        </div>
     </div>
-    <common-footer />
+    <common-footer/>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import CommonHeader from '~/components/CommonHeader'
 import CommonFooter from '~/components/CommonFooter'
+import SearchModule from '~/components/SearchModule'
+import Carousels from '~/components/Carousels'
 
 export default {
   components: {
     CommonHeader,
-    CommonFooter
+    CommonFooter,
+    SearchModule,
+    Carousels
   },
-  async asyncData ({ $axios }) {
-    const [response, promotion] = await Promise.all([
-      // コンテンツ取得
-      $axios.$get('/rcms-api/3/service/6'),
+  async asyncData ({ $axios, $KUROCO_API_URL, $TVG_URL, redirect }) {
+    // TVGAPI専用のエンドポイントのインスタンス作成
+    const tvgApi = axios.create({
+      baseURL: process.env.TVG_API_URL,
+      headers: { 'Content-Type': 'application/json' },
+      responseType: 'json'
+    })
+    const areaMasterUrl = $TVG_URL.AREA_MASTER_API
+    const [topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, area] = await Promise.all([
+      // トップバナー取得
+      $axios.$get($KUROCO_API_URL.BANNER_API),
       // テーマ・目的別に宿を探すリスト
-      $axios.$get('/rcms-api/4/service')
+      $axios.$get($KUROCO_API_URL.THEMA_API).then(async (data) => {
+        let cnt = 0
+        for (const element of data.list) {
+          if (element.shisetsu !== '') {
+            // TVG施設詳細API
+            data.list[cnt].shisetsuImage = await tvgApi.get($TVG_URL.SHISETSU_DETAIL_API,
+              { params: { shisetsu: element.shisetsu } }).then((shisetsuData) => {
+              return shisetsuData.data.Data.Hotel.ShisetsuImage
+            }).then((data) => {
+              return data
+            }).catch((err) => {
+              console.log(err.message)
+              redirect(process.env.ERROR_URL)
+            })
+          }
+          cnt++
+        }
+        return data
+      }),
+      // おすすめ観光ガイド取得
+      $axios.$get($KUROCO_API_URL.SHIGHTSEEING_API),
+      // 広告PR取得
+      $axios.$get($KUROCO_API_URL.ADVERTISEMENT_API),
+      // クーポン取得
+      $axios.$get($KUROCO_API_URL.COUPON_API),
+      // 都道府県から探す取得
+      $axios.$get($KUROCO_API_URL.PREFECTURE_API),
+      // その他リンク取得
+      $axios.$get($KUROCO_API_URL.OTHERLINK_API),
+      // TVGエリアマスタ情報API
+      tvgApi.get(areaMasterUrl).then((area) => {
+        return area.data
+      }).catch((err) => {
+        console.log(err)
+        redirect(process.env.ERROR_URL)
+      }),
+
+      $axios.onError((err) => {
+        // axiosの通信でエラーが発生した時にエラーページにリダイレクト
+        console.log(err)
+        redirect(process.env.ERROR_URL)
+      })
     ])
-    return { response, promotion }
+
+    return { topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, area }
   },
   data() {
     return {
-      page: 0
+      page: 0,
+      tvg_url: this.$TVG_URL,
+      pref: 'hokkaido-tohoku',
+      pref_show: 'hokkaido-tohoku'
     }
   },
   head: {
     script: [
       {
-        src: '/js/jquery-3.5.1.min.js',
-        defer: true
-      },
-      {
-        src: '/js/slick.min.js',
-        defer: true
-      },
-      {
-        src: '/js/slick-carousels.js',
-        defer: true
-      },
-      {
-        src: '/js/custom/common.js',
-        defer: true
-      },
-      {
-        src: '/js/custom/top.js?mexesstest',
-        defer: true
-      },
-      {
-        src: '/js/custom/search-keyword.js',
+        src: '/js/custom/top.js',
         defer: true
       },
       {
         src: '/js/custom/search-area.js',
-        defer: true
-      },
-      {
-        src: '/js/custom/search-room-nums.js',
         defer: true
       },
       {
@@ -161,16 +209,13 @@ export default {
       {
         src: '/js/custom/search-tags.js',
         defer: true
-      },
-      {
-        src: '/js/custom/panel-util.js',
-        defer: true
       }
     ]
   },
   methods: {
-    pagination(index) {
-      this.page = index
+    prefClick(num) {
+      this.pref = this.$AREA_TAB_NAME[num]
+      this.pref_show = this.$AREA_TAB_NAME[num]
     }
   }
 }
@@ -178,42 +223,17 @@ export default {
 
 <style scoped>
 
-.container {
-  width: 100%;
-  max-width: 980px;
-  margin: 0 auto;
-}
+@import "assets/css/top.css";
 
 .slide-image {
   width: 100%;
 }
-
-/*
-.pagination-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+.prefecture-tab {
+  transition: 0.3s;
 }
 
-.pagination {
-  content: "";
-  width: 16px;
-  height: 16px;
-  margin: 20px 10px 0;
-  border-radius: 16px;
-  background-color: #ccc;
-}
+</style>
 
-.pagination:hover {
-  cursor: pointer;
-}
-
-.pagination.active {
-  content: "";
-  width: 16px;
-  height: 16px;
-  border-radius: 16px;
-  background-color: #555;
-}
-*/
+<style>
+@import "assets/css/top-carousel.css";
 </style>

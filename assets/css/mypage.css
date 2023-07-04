@@ -1,0 +1,128 @@
+@charset "UTF-8";
+.user-title {
+    margin: 40px 0 32px;
+    text-align: center;
+    font-family: 'Noto Serif JP';
+    font-size: 1.6rem;
+}
+.user-title .user-name {
+    margin-right: 4px;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+/* クーポン */
+.coupon__container {
+    margin: 56px 0;
+}
+.coupon {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.coupon-bg {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    background: #E7BD00;
+    padding: 12px;
+}
+.coupon-contents {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: center;
+    background: #fff;
+    padding: 12px;
+}
+.coupon-name {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    margin: 0 auto;
+}
+.coupon-name a {
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+
+}
+.coupon-name a:active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.coupon-name a::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+.coupon-discount {
+    margin-top: 12px;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #EC0000;
+}
+.coupon-discount span {
+    font-size: 2rem;
+}
+
+/* 都道府県 > Mエリア */
+* + .hotel-card__area {
+    margin-top: 0.5em;
+}
+.hotel-card__area {
+    display: flex;
+    white-space: nowrap;
+    font-size: 1.2rem;
+}
+.hotel-card__area .lower-area {
+    display: contents;
+    white-space: normal;
+}
+.hotel-card__area .lower-area::before {
+    content: "";
+    min-width:  1.6rem;
+    height: 1.2rem;
+    margin-top: 0.4rem;
+    background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20256%20512%22%3E%3Cpath%20d%3D%22M246.6%20233.4c12.5%2012.5%2012.5%2032.8%200%2045.3l-160%20160c-12.5%2012.5-32.8%2012.5-45.3%200s-12.5-32.8%200-45.3L178.7%20256%2041.4%20118.6c-12.5-12.5-12.5-32.8%200-45.3s32.8-12.5%2045.3%200l160%20160z%22%2F%3E%3C%2Fsvg%3E') center center no-repeat;
+}
+@media only screen and (min-width:768px) {
+    .coupon-bg {
+        width: calc(100% / 2 - 16px / 2);
+    }
+}
+
+@media only screen and (min-width:1025px) {
+    .user-title {
+        margin: 72px 0 56px;
+        font-size: 2.4rem;
+    }
+    .user-title .user-name {
+        font-size: 3.2rem;
+    }
+    /* クーポン */
+    .coupon__container {
+        margin: 56px 0;
+    }
+    .coupon-bg {
+        width: calc(100% / 3 - 32px / 3);
+    }
+    .coupon-contents {
+        padding: 24px 16px;
+    }
+    .coupon-name a {
+        font-size: 1.6rem;
+    }
+    .coupon-name a:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+    .coupon-name a:hover::before {
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 8px;
+    }
+}

@@ -1,0 +1,111 @@
+/* mv slider*/
+.mv-container .slide .ssr-carousel-slide:not(.active){
+    opacity: 0.8;
+}
+.mv-container .slide .ssr-carousel-slide img {
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+.mv-container .slide .ssr-carousel-slide.active img {
+    border: 1px solid #003149;
+}
+.mv-container .ssr-carousel-dots {
+    text-align: center;
+    margin: 16px 0 0 0;
+}
+
+/* 都道府県　ラベル */
+.jp-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 20px;
+    margin-bottom: 24px;
+}
+.jp-area input {
+    display: none;
+}
+.jp-area label {
+    font-size: 1.4rem;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #FCFCFC;
+}
+.jp-area input[type="radio"]:checked+label{
+    color: #004150;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #004150;
+}
+/* 都道府県　画像 */
+.prefectures .prefecture-col {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.prefectures .prefecture {
+    width: 100%;
+    height: 45.73vw;
+}
+.prefectures .prefecture img {
+    object-fit: cover;
+    object-position: center top;
+    width: 100%;
+    height: 100%;
+}
+
+/* 旅行保険 */
+.online-insurance__container .title {
+    margin-top: 48px;
+}
+.online-insurance__container ul{
+    margin: 0;
+    padding: 0;
+}
+.online-insurance__container li{
+    list-style-type: circle;
+    margin-left: 1.5em;
+    padding: 0;
+}
+/* 広告画像 */
+.ad-img {
+    margin-bottom: 32px;
+}
+.ad-img img {
+    width: 100%;
+    height: auto;
+}
+/* 画像の上に文字を表示 */
+.card-image {
+    position: relative;
+}
+.card-image p {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@media only screen and (min-width:768px) {
+    /* 都道府県　画像 */
+    .prefectures .prefecture {
+        width: calc(100% / 2 - 16px / 2);
+        height: 20.67vw;
+    }
+    /*矢印の設定*/
+    .mv-container .slick-arrow {
+        top: min(12.5vw, max(128px));
+    }
+}
+
+@media only screen and (min-width:1025px) {
+    /* 都道府県　ラベル */
+    .jp-area {
+        gap: 16px 32px;
+        margin-bottom: 32px;
+    }
+    .jp-area label {
+        font-size: 2rem;
+    }
+    /* 都道府県　画像 */
+    .prefectures .prefecture {
+        width: calc(100% / 3 - 32px / 3);
+        height: min(14.47vw, 194.5px);
+    }
+}
