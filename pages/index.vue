@@ -103,6 +103,7 @@
         <!-- その他リンク ここまで -->
       </div>
         <div class="ad-img">
+          <!-- 二次開発移行追加する可能性あり -->
             <!-- <img class="pc-only" src="" width="1980" height="218" alt="広告">
             <img class="sp-only" src="" width="375" height="150" alt="広告"> -->
         </div>
@@ -125,10 +126,10 @@ export default {
     SearchModule,
     Carousels
   },
-  async asyncData ({ $axios, $KUROCO_API_URL, $TVG_URL }) {
+  async asyncData ({ $axios, $KUROCO_API_URL, $TVG_URL, redirect }) {
     // TVGAPI専用のエンドポイントのインスタンス作成
     const tvgApi = axios.create({
-      baseURL: $TVG_URL.API_URL,
+      baseURL: process.env.TVG_API_URL,
       headers: { 'Content-Type': 'application/json' },
       responseType: 'json'
     })
@@ -143,12 +144,13 @@ export default {
           if (element.shisetsu !== '') {
             // TVG施設詳細API
             data.list[cnt].shisetsuImage = await tvgApi.get($TVG_URL.SHISETSU_DETAIL_API,
-              { params: { shisetsu: data } }).then((shisetsuData) => {
+              { params: { shisetsu: element.shisetsu } }).then((shisetsuData) => {
               return shisetsuData.data.Data.Hotel.ShisetsuImage
-            }).catch((err) => {
-              console.log(err.message)
             }).then((data) => {
               return data
+            }).catch((err) => {
+              console.log(err.message)
+              redirect(process.env.ERROR_URL)
             })
           }
           cnt++
@@ -170,6 +172,13 @@ export default {
         return area.data
       }).catch((err) => {
         console.log(err)
+        redirect(process.env.ERROR_URL)
+      }),
+
+      $axios.onError((err) => {
+        // axiosの通信でエラーが発生した時にエラーページにリダイレクト
+        console.log(err)
+        redirect(process.env.ERROR_URL)
       })
     ])
 
@@ -218,6 +227,9 @@ export default {
 
 .slide-image {
   width: 100%;
+}
+.prefecture-tab {
+  transition: 0.3s;
 }
 
 </style>

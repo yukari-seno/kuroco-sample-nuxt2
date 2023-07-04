@@ -1,10 +1,13 @@
 const webpack = require('webpack')
 
 require('dotenv').config();
+const {BASE_TVG_URL} = process.env;
+const {TVG_API_URL} = process.env;
+const {ERROR_URL} = process.env;
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
+  ssr: true,
   
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -84,5 +87,10 @@ export default {
     },
     plugins: [
     ]
+  },
+  env: {
+    BASE_TVG_URL,
+    TVG_API_URL,
+    ERROR_URL
   }
 }

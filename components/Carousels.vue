@@ -29,7 +29,33 @@
           >
             <slide :index="index + 1">
               <div class="theme-card">
-                <div v-if="slide.hasOwnProperty('shisetsuImage')" class="theme-card__view">
+                <div v-if="slide.img.url">
+                  <!-- 画像があれば画像を表示 -->
+                  <div class="theme-card__view pc-only">
+                    <div class="card-image">
+                      <p :style="'color:#' + slide.textColoer + ';'">{{ slide.text }}</p>
+                      <img
+                      :src="slide.img.url ?? noImgSrc"
+                      :alt="slide.img.desc"
+                      class="lazyload"
+                      loading="lazy"
+                      >
+                    </div>
+                  </div>
+                  <div class="theme-card__view sp-only">
+                    <div class="card-image">
+                      <p :style="'color:#' + slide.textColoer + ';'">{{ slide.text }}</p>
+                      <img
+                        :src="slide.img_SP.url ?? noImgSrc"
+                        :alt="slide.img_SP.desc"
+                        class="lazyload"
+                        loading="lazy"
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- 施設イメージがあれば施設イメージを表示(取得できなかった場合はnoimage表示) -->
+                <div v-else-if="slide.hasOwnProperty('shisetsuImage')" class="theme-card__view">
                   <div class="card-image">
                     <img
                     :src="slide.shisetsuImage ?? noImgSrc"
@@ -39,6 +65,7 @@
                     <p :style="'color:#' + slide.textColoer + ';'">{{ slide.text }}</p>
                   </div>
                 </div>
+                <!-- 背景色があれば背景色を表示 -->
                 <div v-else-if="slide.backgroungColoer" class="theme-card__view">
                   <div class="card-image">
                     <div
@@ -50,28 +77,15 @@
                     </div>
                   </div>
                 </div>
-                <div v-else>
-                  <div class="theme-card__view pc-only">
-                    <div class="card-image">
-                      <p :style="'color:#' + slide.textColoer + ';'">{{ slide.text }}</p>
-                      <img
-                      :src="slide.img.url"
-                      :alt="slide.img.desc"
-                      class="lazyload"
-                      loading="lazy"
-                      >
-                    </div>
-                  </div>
-                  <div class="theme-card__view sp-only">
-                    <div class="card-image">
-                      <p :style="'color:#' + slide.textColoer + ';'">{{ slide.text }}</p>
-                      <img
-                        :src="slide.img_SP.url"
-                        :alt="slide.img_SP.desc"
-                        class="lazyload"
-                        loading="lazy"
-                      >
-                    </div>
+                <!-- 何も取得できなかった場合はnoimage表示 -->
+                <div v-else class="theme-card__view">
+                  <div class="card-image">
+                    <img
+                    :src="noImgSrc"
+                    class="lazyload"
+                    loading="lazy"
+                    >
+                    <p :style="'color:#' + slide.textColoer + ';'">{{ slide.text }}</p>
                   </div>
                 </div>
                 <div class="theme-card__block">
@@ -131,7 +145,7 @@
               <div class="theme-card">
                 <div class="theme-card__view pc-only">
                   <img
-                    :src="slide.img.url"
+                    :src="slide.img.url ?? noImgSrc"
                     :alt="slide.img.desc"
                     class="lazyload"
                     loading="lazy"
@@ -139,7 +153,7 @@
                 </div>
                 <div class="theme-card__view sp-only">
                   <img
-                    :src="slide.img_SP.url"
+                    :src="slide.img_SP.url ?? noImgSrc"
                     :alt="slide.img_SP.desc"
                     class="lazyload"
                     loading="lazy"
@@ -202,7 +216,7 @@
               <div class="theme-card">
                 <div class="theme-card__view pc-only">
                   <img
-                    :src="slide.img.url"
+                    :src="slide.img.url ?? noImgSrc"
                     :alt="slide.img.desc"
                     class="lazyload"
                     loading="lazy"
@@ -210,7 +224,7 @@
                 </div>
                 <div class="theme-card__view sp-only">
                   <img
-                    :src="slide.img_SP.url"
+                    :src="slide.img_SP.url ?? noImgSrc"
                     :alt="slide.img_SP.desc"
                     class="lazyload"
                     loading="lazy"
@@ -273,7 +287,7 @@
               <div class="theme-card">
                 <div class="theme-card__view pc-only">
                   <img
-                    :src="slide.img.url"
+                    :src="slide.img.url ?? noImgSrc"
                     :alt="slide.img.desc"
                     class="lazyload"
                     loading="lazy"
@@ -281,7 +295,7 @@
                 </div>
                 <div class="theme-card__view sp-only">
                   <img
-                    :src="slide.img_SP.url"
+                    :src="slide.img_SP.url ?? noImgSrc"
                     :alt="slide.img_SP.desc"
                     class="lazyload"
                     loading="lazy"
