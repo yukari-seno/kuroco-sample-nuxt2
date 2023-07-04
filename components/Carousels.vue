@@ -14,6 +14,10 @@
           :responsive='[
             {
               maxWidth: 768,
+              slidesPerPage: 3,
+            },
+            {
+              maxWidth: 428,
               slidesPerPage: 2,
             }
           ]'
@@ -128,6 +132,10 @@
           :responsive='[
             {
               maxWidth: 768,
+              slidesPerPage: 3,
+            },
+            {
+              maxWidth: 428,
               slidesPerPage: 2,
             }
           ]'
@@ -199,6 +207,10 @@
           :responsive='[
             {
               maxWidth: 768,
+              slidesPerPage: 3,
+            },
+            {
+              maxWidth: 428,
               slidesPerPage: 2,
             }
           ]'
@@ -340,14 +352,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .card-image {
-    position: relative;
-  }
-  .card-image p {
-    position: absolute;
-    top: 10%;
-    left: 5%;
-  }
-</style>
