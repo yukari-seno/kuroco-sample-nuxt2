@@ -28,16 +28,16 @@
             }
           ]'
             >
-            <li v-for="(slide, index) in topBanner.list" :key="index" :index="index + 1" :class="{ active: page === index }">
+            <li v-for="(slide, index) in topBanner.list" :key="index" :class="{ active: page === index }">
               <a :href="slide.url" :target="slide.transitionDev.key === '1' ? '_self' : '_blank'">
                 <img class="slide-image" :alt="slide.img.desc" :src="slide.img.url">
               </a>
             </li>
             <template #back-arrow>
-              <img class="ssr-carousel-back-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
+              <img alt="" class="ssr-carousel-back-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
             </template>
             <template #next-arrow>
-              <img class="ssr-carousel-next-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
+              <img alt="" class="ssr-carousel-next-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjIzLjUiIGZpbGw9IiMwMDQxNTAiIGZpbGwtb3BhY2l0eT0iMC44IiBzdHJva2U9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xOC43NSAxMy41TDI5LjI1IDI0TDE4Ljc1IDM0LjUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
             </template>
           </ssr-carousel>
         </ul>
@@ -69,14 +69,14 @@
           <div class="prefectures">
             <div v-for="(area, key) in prefecture" :key="key">
               <div v-if="pref_show == $AREA_TAB_NAME[area.category.ext_col_01]" :class="$AREA_TAB_NAME[area.category.ext_col_01] + ' prefecture-col'">
-                <div v-for="(pre, index) in area.list" :key="index" :index="index + 1" class="prefecture">
+                <div v-for="(pre, index) in area.list" :key="index" class="prefecture">
                   <a :href="tvg_url + $AREA_EN_NAME[pre.code.key] + '/pr' + pre.code.key">
                     <img :alt="pre.img.desc" :src="pre.img.url">
                   </a>
                 </div>
               </div>
               <div v-else-if="pref_show != $AREA_TAB_NAME[area.category.ext_col_01]" :class="$AREA_TAB_NAME[area.category.ext_col_01] + ' prefecture-col'" style="display: none;">
-                <div v-for="(pre, index) in area.list" :key="index" :index="index + 1" class="prefecture">
+                <div v-for="(pre, index) in area.list" :key="index" class="prefecture">
                   <a :href="tvg_url + $AREA_EN_NAME[pre.code.key] + '/pr' + pre.code.key">
                     <img :alt="pre.img.desc" :src="pre.img.url">
                   </a>
@@ -187,7 +187,7 @@ export default {
   data() {
     return {
       page: 0,
-      tvg_url: this.$TVG_URL,
+      tvg_url: process.env.BASE_TVG_URL,
       pref: 'hokkaido-tohoku',
       pref_show: 'hokkaido-tohoku'
     }

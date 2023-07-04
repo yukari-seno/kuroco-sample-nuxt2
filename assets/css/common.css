@@ -742,7 +742,7 @@ img:not([class])[width][height] {
     font-size: 1.4rem;
     font-weight: 500;
     border: 1px solid #EEEEEE;
-    height: 100%;
+    height: auto;
 }
 .search-theme__container .theme-card {
     background: #fff;

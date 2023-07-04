@@ -31,72 +31,67 @@
                   <div class="tab-content">
                     <div id="area_select-area" class="tab-content__pane active" data-tab-cts="area_select">
                       <div class="area-select-area" data-depth="0">
-                        <ul class="area-select-area__items">
+                        <ul class="area-select-area__items" v-for="areas in area.Area" :key="areas.code">
                           <!-- 都道府県ループ -->
-                          <div v-for="areas in area.Area" :key="areas.code">
-                            <li v-for="pref in areas.Prefecture" :key="pref.code" class="area-select-area__item">
-                              <div class="area-select-area__card">
-                                <button type="button" class="area-select-area__acc-btn" data-accordion-toggle>
-                                  <span class="area-select-area__acc-ico">＋</span>
-                                </button>
-                                <label class="form-radio">
-                                  <input
-                                    :id="'area_' + pref.code"
-                                    type="radio"
-                                    name="area_select"
-                                    :value="$AREA_EN_NAME[pref.code] + '/pr' + pref.code"
-                                    class="form-radio-input"
-                                    :checked="areaCode===pref.code? true : false"
-                                    >
-                                    <!-- @click="areaSelect(pref)" -->
-                                  <span class="form-radio-label">{{ pref.name }}</span>
-                                </label>
-                              </div>
-                              <div class="area-select-area-sub depth-last" data-accordion-cts data-depth="1">
-                                <ul class="area-select-area__items">
-                                  <!-- 広域地区ループ -->
-                                  <li v-for="sub in pref.SubArea" :key="sub.code" class="area-select-area__item">
-                                    <div class="area-select-area__card">
-                                      <button type="button" class="area-select-area__acc-btn" data-accordion-toggle>
-                                        <span class="area-select-area__acc-ico">＋</span>
-                                      </button>
-                                      <label class="form-radio">
-                                        <input
-                                          :id="'area_' + sub.code"
-                                          type="radio"
-                                          name="area_select"
-                                          :value="$AREA_EN_NAME[pref.code] + '/su' + sub.code"
-                                          class="form-radio-input"
-                                          >
-                                          <!-- @click="areaSelect(sub)" -->
-                                        <span class="form-radio-label">{{ sub.name }}</span>
-                                      </label>
-                                    </div>
-                                    <div class="area-select-area-sub depth-last" data-accordion-cts data-depth="2">
-                                      <!-- 詳細地区 -->
-                                      <ul v-for="mesh in sub.Mesh" :key="mesh.code" class="area-select-area__items">
-                                        <li class="area-select-area__item">
-                                          <div class="area-select-area__card">
-                                            <label class="form-radio">
-                                              <input
-                                                :id="'area_' + mesh.code"
-                                                type="radio"
-                                                name="area_select"
-                                                :value="$AREA_EN_NAME[pref.code] + '/ms' + mesh.code"
-                                                class="form-radio-input"
-                                                >
-                                                <!-- @click="areaSelect(mesh)" -->
-                                              <span class="form-radio-label">{{ mesh.name }}</span>
-                                            </label>
-                                          </div>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </li>
-                                </ul>
-                              </div>
-                            </li>
-                          </div>
+                          <li v-for="pref in areas.Prefecture" :key="pref.code" class="area-select-area__item">
+                            <div class="area-select-area__card">
+                              <button type="button" class="area-select-area__acc-btn" data-accordion-toggle>
+                                <span class="area-select-area__acc-ico">＋</span>
+                              </button>
+                              <label class="form-radio">
+                                <input
+                                  :id="'area_' + pref.code"
+                                  type="radio"
+                                  name="area_select"
+                                  :value="$AREA_EN_NAME[pref.code] + '/pr' + pref.code"
+                                  class="form-radio-input"
+                                  :checked="areaCode===pref.code? true : false"
+                                  >
+                                <span class="form-radio-label">{{ pref.name }}</span>
+                              </label>
+                            </div>
+                            <div class="area-select-area-sub depth-last" data-accordion-cts data-depth="1">
+                              <ul class="area-select-area__items">
+                                <!-- 広域地区ループ -->
+                                <li v-for="sub in pref.SubArea" :key="sub.code" class="area-select-area__item">
+                                  <div class="area-select-area__card">
+                                    <button type="button" class="area-select-area__acc-btn" data-accordion-toggle>
+                                      <span class="area-select-area__acc-ico">＋</span>
+                                    </button>
+                                    <label class="form-radio">
+                                      <input
+                                        :id="'area_' + sub.code"
+                                        type="radio"
+                                        name="area_select"
+                                        :value="$AREA_EN_NAME[pref.code] + '/su' + sub.code"
+                                        class="form-radio-input"
+                                        >
+                                      <span class="form-radio-label">{{ sub.name }}</span>
+                                    </label>
+                                  </div>
+                                  <div class="area-select-area-sub depth-last" data-accordion-cts data-depth="2">
+                                    <!-- 詳細地区 -->
+                                    <ul v-for="mesh in sub.Mesh" :key="mesh.code" class="area-select-area__items">
+                                      <li class="area-select-area__item">
+                                        <div class="area-select-area__card">
+                                          <label class="form-radio">
+                                            <input
+                                              :id="'area_' + mesh.code"
+                                              type="radio"
+                                              name="area_select"
+                                              :value="$AREA_EN_NAME[pref.code] + '/ms' + mesh.code"
+                                              class="form-radio-input"
+                                              >
+                                            <span class="form-radio-label">{{ mesh.name }}</span>
+                                          </label>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </li>
                         </ul>
                       </div>
                     </div>
@@ -129,6 +124,25 @@ export default {
     return {
       areaName: '東京都',
       areaCode: '13'
+    }
+  },
+  mounted() {
+    window.onload = () => {
+      const traveler = document.querySelector('[data-panel=travelers]')
+      const panelEl = document.querySelectorAll('[data-panel]')
+      panelEl.forEach((rel) => {
+        rel.addEventListener('prepaneltoggle', (e) => {
+          if (traveler.classList.contains('is-open')) {
+            e.preventDefault()
+          }
+        })
+      })
+
+      document.addEventListener('clickouter', (e) => {
+        if (traveler.classList.contains('is-open')) {
+          e.preventDefault()
+        }
+      })
     }
   }
 }

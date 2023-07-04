@@ -9,7 +9,7 @@
             </p>
           </div>
           <div id="search-param" class="searchbox-tab-content__pane active" data-tab-cts="searchbox">
-            <form method="GET" action="http://tvg-vm/search/search" autocomplete="off">
+            <form method="GET" :action="baseUrl + 'search'" autocomplete="off">
               <div class="srh-param">
                 <div class="srh-param__row">
                   <!-- エリア条件 -->
@@ -27,6 +27,7 @@
                       </label>
                     </div>
                     <input
+                      id="srh-param-keyword"
                       type="text"
                       class="form-control ignore form-input form-input--search"
                       name="keyword[word]"
