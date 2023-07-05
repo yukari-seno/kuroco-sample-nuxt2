@@ -5,7 +5,8 @@ const KUROCO_API_URL = {
   ADVERTISEMENT_API: '/rcms-api/5/advertisement',
   COUPON_API: '/rcms-api/5/coupon',
   PREFECTURE_API: '/rcms-api/5/prefecture',
-  OTHERLINK_API: '/rcms-api/5/otherLink'
+  OTHERLINK_API: '/rcms-api/5/otherLink',
+  FOOTERLINK_API: '/rcms-api/5/footerLink'
 }
 
 const TVG_URL = {

@@ -1,42 +1,18 @@
 <template>
   <footer class="footer"> <!-- TODO href,target未確定 -->
-    <div class="pagetop" data-pagetop data-pagetop-custom=".footer"><a href="#top"
-         title="このページの先頭へ"
-         class="pagetop__link"><span>このページの先頭へ</span></a></div>
+    <div class="pagetop" data-pagetop data-pagetop-custom=".footer">
+      <a href="#top" title="このページの先頭へ" class="pagetop__link">
+        <span>このページの先頭へ</span>
+      </a>
+    </div>
     <div class="ft-contents-wrap">
       <div class="ft-contents pc-only">
-        <div class="ft-content">
-          <p>たびゲーター人気コンテンツ</p>
+        <div v-for="(linkList, key) in footerLink" :key="key" class="ft-content">
+          <p>{{ linkList.category.category_nm }}</p>
           <ul>
-            <li><a href="https://travel.yahoo.co.jp/promo/coupon/list/tvg" target="_blank">お得なクーポン</a></li>
-            <li><a href="https://www.tavigator.co.jp/plus/bargain">バーゲン宿泊プラン</a></li>
-            <li><a href="https://www.tavigator.co.jp/plus/roten">露天風呂付き客室</a></li>
-            <li><a href="https://www.tavigator.co.jp/plus/asoberu">一日中遊べる宿</a></li>
-            <li><a href="https://www.tavigator.co.jp/plus/disney">東京ディズニーリゾート（R）</a></li>
-            <li><a href="https://travel.yahoo.co.jp/special/wh_list/" target="_blank">テーマ、目的別&emsp;旅のおすすめ特集</a></li>
-          </ul>
-        </div>
-        <div class="ft-content">
-          <p>たびゲーターサービス</p>
-          <ul>
-            <li><a href="https://www.tavigator.co.jp/web/furusato">ふるさと納税</a></li>
-            <li><a href="https://www.tavigator.co.jp/plus">Myたびプラス</a></li>
-            <li><a href="https://www.tavigator.co.jp/web/line">公式LINE</a></li>
-            <li><a href="https://app.tavigator.co.jp/magazine/register" target="_blank">お得なメールマガジン</a></li>
-            <li><a href="https://www.tavigator.co.jp/business.html">法人向けサービス</a></li>
-          </ul>
-        </div>
-        <div class="ft-content">
-          <p>サポート</p>
-          <ul>
-            <li><a href="https://www.tavigator.co.jp/web/help">ヘルプ・チャットボット</a></li>
-            <li><a href="https://www.tavigator.co.jp/help/user_env/pc.html">推奨環境</a></li>
-          </ul>
-        </div>
-        <div class="ft-content">
-          <p>たびゲーターについて</p>
-          <ul>
-            <li><a href="https://www.tavigator.co.jp/company.html">会社案内</a></li>
+            <li v-for="(link, index) in linkList.list" :key="index">
+              <a :href="link.linkURL" :target="link.transitionDev.key === '1' ? '_self' : '_blank'">{{ link.linkTitle }}</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -87,6 +63,7 @@
 
 <script>
 export default {
-  name: 'CommonFooter'
+  name: 'CommonFooter',
+  props: ['footerLink']
 }
 </script>

@@ -108,7 +108,7 @@
             <img class="sp-only" src="" width="375" height="150" alt="広告"> -->
         </div>
     </div>
-    <common-footer/>
+    <common-footer :footerLink="footerLink"/>
   </div>
 </template>
 
@@ -134,7 +134,7 @@ export default {
       responseType: 'json'
     })
     const areaMasterUrl = $TVG_URL.AREA_MASTER_API
-    const [topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, area] = await Promise.all([
+    const [topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, footerLink, area] = await Promise.all([
       // トップバナー取得
       $axios.$get($KUROCO_API_URL.BANNER_API),
       // テーマ・目的別に宿を探すリスト
@@ -167,6 +167,8 @@ export default {
       $axios.$get($KUROCO_API_URL.PREFECTURE_API),
       // その他リンク取得
       $axios.$get($KUROCO_API_URL.OTHERLINK_API),
+      // フッターリンク取得
+      $axios.$get($KUROCO_API_URL.FOOTERLINK_API),
       // TVGエリアマスタ情報API
       tvgApi.get(areaMasterUrl).then((area) => {
         return area.data
@@ -182,7 +184,7 @@ export default {
       })
     ])
 
-    return { topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, area }
+    return { topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, footerLink, area }
   },
   data() {
     return {
