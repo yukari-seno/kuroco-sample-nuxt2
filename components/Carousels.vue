@@ -10,6 +10,7 @@
         <ssr-carousel
           :slides-per-page="4"
           show-arrows
+          :paginate-by-slide="false"
           :peek-right='60'
           :responsive='[
             {
