@@ -123,6 +123,7 @@
           :slides-per-page="4"
           show-arrows
           :peek-right='60'
+          :paginate-by-slide="false"
           :responsive='[
             {
               maxWidth: 768,
@@ -195,6 +196,7 @@
           :slides-per-page="4"
           show-arrows
           :peek-right='60'
+          :paginate-by-slide="false"
           :responsive='[
             {
               maxWidth: 768,
@@ -267,6 +269,7 @@
           :slides-per-page="4"
           show-arrows
           :peek-right='60'
+          :paginate-by-slide="false"
           :responsive='[
             {
               maxWidth: 768,
