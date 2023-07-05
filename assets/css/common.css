@@ -743,6 +743,7 @@ img:not([class])[width][height] {
     font-weight: 500;
     border: 1px solid #EEEEEE;
     height: auto;
+    position: relative;
 }
 .search-theme__container .theme-card {
     background: #fff;
