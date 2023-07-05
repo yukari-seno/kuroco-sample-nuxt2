@@ -766,6 +766,15 @@ img:not([class])[width][height] {
 .search-theme__container .theme-card__block {
     padding: 12px;
 }
+.search-theme__container .theme-card .theme-card__link::before{
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
 .search-theme__container .theme-card:active .theme-card__link{
     text-decoration: underline;
     text-underline-offset: 4px;

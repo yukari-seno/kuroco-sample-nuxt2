@@ -14,7 +14,7 @@
                                     <li class="header-action__item"><a href="https://www.tavigator.co.jp/web/line" target="_self" title="LINE" class="header-action__link"><i class="fa-brands fa-line" style="color:#00B900;"></i><p>LINE</p></a></li>
                                 </ul>
                                 <ul class="header-action__items">
-                                    <li class="header-action__item"><a href="https://www.tavigator.co.jp/web/help/oshirase" target="_self" title="お知らせ" class="news-link header-action__link"><i class="fa-solid fa-info"></i><p>お知らせ<span>999</span></p></a></li> <!-- max999件想定 -->
+                                    <li class="header-action__item"><a href="https://www.tavigator.co.jp/web/help/oshirase" target="_self" title="お知らせ" class="news-link header-action__link"><i class="fa-solid fa-info"></i><p>お知らせ<!--span>999</span--></p></a></li> <!-- max999件想定 -->
                                     <li class="header-action__item"><a href="https://www.tavigator.co.jp/web/help#anchor04" target="_self" title="予約確認・取り消し" class="header-action__link"><i class="fa-solid fa-calendar-check"></i><p>予約確認・取り消し</p></a></li>
                                     <li class="header-action__item"><a href="https://www.tavigator.co.jp/web/help" target="_self" title="ヘルプ" class="header-action__link"><i class="fa-solid fa-question"></i><p>ヘルプ</p></a></li>
                                     <!-- 1次では非表示 -->
