@@ -219,6 +219,16 @@ export default {
       this.pref = this.$AREA_TAB_NAME[num]
       this.pref_show = this.$AREA_TAB_NAME[num]
     }
+  },
+  mounted() {
+    this.$nextTick(function () {
+      const commonScript = document.createElement('script');
+      commonScript.setAttribute(
+        'src',
+        '/js/custom/common.js'
+      );
+      document.head.appendChild(commonScript);
+    })
   }
 }
 </script>
