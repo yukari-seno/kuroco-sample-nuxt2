@@ -1,4 +1,4 @@
-.ssr-carousel-track {
+.container .ssr-carousel-track {
     justify-content: left !important;
     display: flex;
 }

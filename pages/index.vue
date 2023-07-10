@@ -127,6 +127,10 @@ export default {
     Carousels
   },
   async asyncData ({ $axios, $KUROCO_API_URL, $TVG_URL, redirect }) {
+    // 都道府県から探すタブ数(0始まり)
+    const prefectureTabMax = 9
+    // フッターリンクカテゴリー数(0始まり)
+    const footerLinkMax = 3
     // TVGAPI専用のエンドポイントのインスタンス作成
     const tvgApi = axios.create({
       baseURL: process.env.TVG_API_URL,
@@ -183,7 +187,19 @@ export default {
         redirect(process.env.ERROR_URL)
       })
     ])
-
+    // トップバナー、テーマ・目的別、観光ガイド、その他リンクが0件の場合、エラーぺージへ
+    if (topBanner.pageInfo.totalCnt === 0 || theme.pageInfo.totalCnt === 0 ||
+    sightseeing.pageInfo.totalCnt === 0 || otherLink.pageInfo.totalCnt === 0) {
+      redirect(process.env.ERROR_URL)
+    }
+    // 都道府県から探す0件の場合、エラー
+    if (!prefecture[prefectureTabMax]) {
+      redirect(process.env.ERROR_URL)
+    }
+    // フッターリンク0件の場合、エラー
+    if (!footerLink[footerLinkMax]) {
+      redirect(process.env.ERROR_URL)
+    }
     return { topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, footerLink, area }
   },
   data() {
@@ -222,12 +238,18 @@ export default {
   },
   mounted() {
     this.$nextTick(function () {
-      const commonScript = document.createElement('script');
+      const commonScript = document.createElement('script')
       commonScript.setAttribute(
         'src',
         '/js/custom/common.js'
-      );
-      document.head.appendChild(commonScript);
+      )
+      document.head.appendChild(commonScript)
+      const hamburgerScript = document.createElement('script')
+      hamburgerScript.setAttribute(
+        'src',
+        '/js/custom/hamburger.js'
+      )
+      document.head.appendChild(hamburgerScript)
     })
   }
 }
