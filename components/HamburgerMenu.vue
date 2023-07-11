@@ -119,14 +119,6 @@
 
 <script>
 export default {
-  name: 'HamburgerMenu',
-  head: {
-    script: [
-      {
-        src: '/js/custom/hamburger.js',
-        defer: true
-      }
-    ]
-  }
+  name: 'HamburgerMenu'
 }
 </script>
