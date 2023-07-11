@@ -72,7 +72,7 @@
                         </ul>
                     </li> -->
                     <!-- //1次では非表示 -->
-                    <li><a href="#" target="_self" title="ふるさと納税" class="header-menu__link">
+                    <li><a href="https://www.tavigator.co.jp/web/furusato" target="_self" title="ふるさと納税" class="header-menu__link">
                             <p>ふるさと納税</p>
                         </a></li> <!-- TODO link -->
                     <li><a href="#" target="_self" title="契約保養所システム" class="header-menu__link">
