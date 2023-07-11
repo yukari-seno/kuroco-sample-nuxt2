@@ -28,7 +28,7 @@
                         target="_self"
                         title="お知らせ"
                         class="news-link header-action__link"><i class="fa-solid fa-info"></i>
-                            <p>お知らせ<!-- ログイン時のみ表示 --><span>999</span><!-- //ログイン時のみ表示 --></p>
+                            <p>お知らせ<!-- ログイン時のみ表示 ><span>999</span>< //ログイン時のみ表示 --></p>
                         </a></li>
                     <li><a href="https://www.tavigator.co.jp/web/help#anchor04" target="_self" title="予約確認・取り消し" class="header-action__link"><i class="fa-solid fa-calendar-check"></i>
                             <p>予約確認・取り消し</p>
