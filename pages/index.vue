@@ -210,25 +210,57 @@ export default {
       pref_show: 'hokkaido-tohoku'
     }
   },
-  head: {
-    script: [
-      {
-        src: '/js/custom/top.js',
-        defer: true
-      },
-      {
-        src: '/js/custom/search-area.js',
-        defer: true
-      },
-      {
-        src: '/js/custom/search-checkin-out.js',
-        defer: true
-      },
-      {
-        src: '/js/custom/search-tags.js',
-        defer: true
-      }
-    ]
+  computed: {
+    currentPageForCanonical() {
+      return this.$route.path.slice(1)
+    }
+  },
+  head() {
+    return {
+      script: [
+        {
+          src: '/js/custom/top.js',
+          defer: true
+        },
+        {
+          src: '/js/custom/search-area.js',
+          defer: true
+        },
+        {
+          src: '/js/custom/search-checkin-out.js',
+          defer: true
+        },
+        {
+          src: '/js/custom/search-tags.js',
+          defer: true
+        }
+      ],
+      title: 'ホテル・旅館の宿泊予約はたびゲーター',
+      h1: 'ホテル・旅館の宿泊予約はたびゲーター',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'ホテル・旅館の宿泊予約をするならたびゲーター。全国のホテル・旅館をご希望の日程や条件でお探しいただけます。厳選ホテル・旅館で使える、たびゲーター限定割引クーポンも配布中。割引クーポンを使って、お得に宿泊できます。宿泊予約にぜひ、たびゲーターをご利用ください。'
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'ホテル・旅館の宿泊予約はたびゲーター'
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'ホテル・旅館の宿泊予約をするならたびゲーター。全国のホテル・旅館をご希望の日程や条件でお探しいただけます。厳選ホテル・旅館で使える、たびゲーター限定割引クーポンも配布中。割引クーポンを使って、お得に宿泊できます。宿泊予約にぜひ、たびゲーターをご利用ください。'
+        }
+      ],
+      link: [
+        {
+          rel: 'canonical',
+          href: `${process.env.BASE_URL}${this.currentPageForCanonical}`
+        }
+      ]
+    }
   },
   methods: {
     prefClick(num) {

@@ -10,8 +10,8 @@ const KUROCO_API_URL = {
 }
 
 const TVG_URL = {
-  AREA_MASTER_API: '/Area?ResID=TVG_AREA_MST_JSON',
-  SHISETSU_DETAIL_API: '/FacilityDetail?ResID=TVG_FACILITY_DETAIL_JSON&JtbShisetsuApiExeFlg=0'
+  AREA_MASTER_API: 'Area?ResID=TVG_AREA_MST_JSON',
+  SHISETSU_DETAIL_API: 'FacilityDetail?ResID=TVG_FACILITY_DETAIL_JSON&JtbShisetsuApiExeFlg=0'
 }
 
 export default (context, inject) => {
