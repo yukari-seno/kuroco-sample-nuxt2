@@ -8,6 +8,9 @@ on:
   workflow_dispatch:
 env:
   BASE_URL: ${{secrets.BASE_URL}}
+  BASE_TVG_URL: ${{secrets.BASE_TVG_URL}}
+  TVG_API_URL: ${{secrets.TVG_API_URL}}
+  ERROR_URL: ${{secrets.ERROR_URL}}
 jobs:
   # for Pull Request (exclude merged)
   pullreq_build:
