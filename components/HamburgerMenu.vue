@@ -28,7 +28,7 @@
                         target="_self"
                         title="お知らせ"
                         class="news-link header-action__link"><i class="fa-solid fa-info"></i>
-                            <p>お知らせ<!-- ログイン時のみ表示 --><span>999</span><!-- //ログイン時のみ表示 --></p>
+                            <p>お知らせ<!-- ログイン時のみ表示 ><span>999</span>< //ログイン時のみ表示 --></p>
                         </a></li>
                     <li><a href="https://www.tavigator.co.jp/web/help#anchor04" target="_self" title="予約確認・取り消し" class="header-action__link"><i class="fa-solid fa-calendar-check"></i>
                             <p>予約確認・取り消し</p>
@@ -72,7 +72,7 @@
                         </ul>
                     </li> -->
                     <!-- //1次では非表示 -->
-                    <li><a href="#" target="_self" title="ふるさと納税" class="header-menu__link">
+                    <li><a href="https://www.tavigator.co.jp/web/furusato" target="_self" title="ふるさと納税" class="header-menu__link">
                             <p>ふるさと納税</p>
                         </a></li> <!-- TODO link -->
                     <li><a href="#" target="_self" title="契約保養所システム" class="header-menu__link">
@@ -119,14 +119,6 @@
 
 <script>
 export default {
-  name: 'HamburgerMenu',
-  head: {
-    script: [
-      {
-        src: '/js/custom/hamburger.js',
-        defer: true
-      }
-    ]
-  }
+  name: 'HamburgerMenu'
 }
 </script>

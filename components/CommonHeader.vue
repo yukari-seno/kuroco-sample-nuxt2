@@ -54,7 +54,7 @@
                                 </ul>
                             </li> -->
                             <!-- //1次では非表示 -->
-                            <li class="header-menu__item"><a href="#" target="_self" title="ふるさと納税" class="header-menu__link">ふるさと納税</a></li> <!-- TODO link -->
+                            <li class="header-menu__item"><a href="https://www.tavigator.co.jp/web/furusato" target="_self" title="ふるさと納税" class="header-menu__link">ふるさと納税</a></li> <!-- TODO link -->
                             <li class="header-menu__item"><a href="#" target="_self" title="契約保養所システム" class="header-menu__link">契約保養所システム</a></li> <!-- TODO link -->
                             <li class="header-menu__item"><a href="#" target="_self" title="遊び・体験" class="header-menu__link">遊び・体験</a></li> <!-- TODO link -->
                             <li class="header-menu__item"><a href="#" target="_self" title="観光ガイド" class="header-menu__link">観光ガイド</a></li> <!-- TODO link -->

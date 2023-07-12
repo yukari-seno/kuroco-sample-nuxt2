@@ -30,10 +30,6 @@ export default {
     ],
     script: [
       {
-        src: '/js/custom/common.js',
-        defer: true
-      },
-      {
         src: '/js/jquery-3.5.1.min.js',
         defer: true
       },

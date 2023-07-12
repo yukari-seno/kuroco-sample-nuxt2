@@ -18,11 +18,11 @@
                     <div class="form-label">
                       <label for="srh-param-keyword" class="form-label">キーワード</label>
                       <label class="form-radio ">
-                        <input type="radio" class="form-radio-input plan-radio-input" v-model="keyword" value="skeyword"/>
+                        <input type="radio" name="keyword[type]" class="form-radio-input plan-radio-input" v-model="keyword" value="skeyword"/>
                         <span class="form-radio-label">施設</span>
                       </label>
                       <label class="form-radio">
-                        <input type="radio" class="form-radio-input plan-radio-input" v-model="keyword" value="pkeyword"/>
+                        <input type="radio" name="keyword[type]" class="form-radio-input plan-radio-input" v-model="keyword" value="pkeyword"/>
                         <span class="form-radio-label">プラン</span>
                       </label>
                     </div>
