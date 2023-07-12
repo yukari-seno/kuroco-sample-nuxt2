@@ -54,6 +54,9 @@ jobs:
           webhook_url: "https://mex-dev.g.kuroco.app/direct/menu/github/"
           webhook_secret: "2b19e71337f953b5658f7ea726524879"
           data: '{"single_zip":"0","domain":"mex-dev.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ steps.get_branch.outputs.sha }}"}'
+      - name: Error
+        continue-on-error: true
+        run: redirect(process.env.ERROR_URL)
           
   #for Push
   pushed_build:

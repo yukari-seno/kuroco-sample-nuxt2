@@ -154,7 +154,7 @@ export default {
               return data
             }).catch((err) => {
               console.log(err.message)
-              redirect(process.env.ERROR_URL)
+              throw new Error('API Error')
             })
           }
           cnt++
@@ -178,27 +178,27 @@ export default {
         return area.data
       }).catch((err) => {
         console.log(err)
-        redirect(process.env.ERROR_URL)
+        throw new Error('API Error')
       }),
 
       $axios.onError((err) => {
         // axiosの通信でエラーが発生した時にエラーページにリダイレクト
         console.log(err)
-        redirect(process.env.ERROR_URL)
+        throw new Error('API Error')
       })
     ])
     // トップバナー、テーマ・目的別、観光ガイド、その他リンクが0件の場合、エラーぺージへ
     if (topBanner.pageInfo.totalCnt === 0 || theme.pageInfo.totalCnt === 0 ||
     sightseeing.pageInfo.totalCnt === 0 || otherLink.pageInfo.totalCnt === 0) {
-      redirect(process.env.ERROR_URL)
+      throw new Error('API Error')
     }
     // 都道府県から探す0件の場合、エラー
     if (!prefecture[prefectureTabMax]) {
-      redirect(process.env.ERROR_URL)
+      throw new Error('API Error')
     }
     // フッターリンク0件の場合、エラー
     if (!footerLink[footerLinkMax]) {
-      redirect(process.env.ERROR_URL)
+      throw new Error('API Error')
     }
     return { topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, footerLink, area }
   },
