@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build && nuxt export",
+    "build": "nuxt build && nuxt export --fail-on-error",
     "start": "nuxt start",
-    "generate": "nuxt generate -fail-on-error",
+    "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "lintfix": "npm run lint:js -- --fix"

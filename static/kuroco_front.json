@@ -9,8 +9,8 @@
   "basic":[],
   "ip_restrictions":[],
   "error_page": {
-    "status404":"process.env.ERROR_URL",
-    "status401":"process.env.ERROR_URL",
-    "status_ip_503":"process.env.ERROR_URL"
+    "status404":"source .env && echo $ERROR_URL",
+    "status401":"source .env && echo $ERROR_URL",
+    "status_ip_503":"source .env && echo $ERROR_URL"
   }
 }
