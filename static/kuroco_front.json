@@ -1,11 +1,16 @@
 {
-    "rewrites": [
-        {
-          "source": ".*",
-          "destination": "/index.html"
-        }
-      ],
-    "redirects": [],
-    "basic":[],
-    "ip_restrictions":[]
+  "rewrites": [
+    {
+      "source": ".*",
+      "destination": "/index.html"
+    }
+  ],
+  "redirects": [],
+  "basic":[],
+  "ip_restrictions":[],
+  "error_page": {
+    "status404":"source .env && echo $ERROR_URL",
+    "status401":"source .env && echo $ERROR_URL",
+    "status_ip_503":"source .env && echo $ERROR_URL"
+  }
 }

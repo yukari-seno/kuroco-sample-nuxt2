@@ -30,7 +30,8 @@
             >
             <li v-for="(slide, index) in topBanner.list" :key="index" :class="{ active: page === index }">
               <a :href="slide.url" :target="slide.transitionDev.key === '1' ? '_self' : '_blank'">
-                <img class="slide-image" :alt="slide.img.desc" :src="slide.img.url">
+                <img class="slide-image pc-only" :alt="slide.img.desc" :src="slide.img.url">
+                <img class="slide-image sp-only" :alt="slide.img_SP.desc" :src="slide.img_SP.url">
               </a>
             </li>
             <template #back-arrow>
@@ -71,14 +72,16 @@
               <div v-if="pref_show == $AREA_TAB_NAME[area.category.ext_col_01]" :class="$AREA_TAB_NAME[area.category.ext_col_01] + ' prefecture-col'">
                 <div v-for="(pre, index) in area.list" :key="index" class="prefecture">
                   <a :href="tvg_url + $AREA_EN_NAME[pre.code.key] + '/pr' + pre.code.key">
-                    <img :alt="pre.img.desc" :src="pre.img.url">
+                    <img :alt="pre.img.desc" :src="pre.img.url" class="pc-only">
+                    <img :alt="pre.img_SP.desc" :src="pre.img_SP.url" class="sp-only">
                   </a>
                 </div>
               </div>
               <div v-else-if="pref_show != $AREA_TAB_NAME[area.category.ext_col_01]" :class="$AREA_TAB_NAME[area.category.ext_col_01] + ' prefecture-col'" style="display: none;">
                 <div v-for="(pre, index) in area.list" :key="index" class="prefecture">
                   <a :href="tvg_url + $AREA_EN_NAME[pre.code.key] + '/pr' + pre.code.key">
-                    <img :alt="pre.img.desc" :src="pre.img.url">
+                    <img :alt="pre.img.desc" :src="pre.img.url" class="pc-only">
+                    <img :alt="pre.img_SP.desc" :src="pre.img_SP.url" class="sp-only">
                   </a>
                 </div>
               </div>
