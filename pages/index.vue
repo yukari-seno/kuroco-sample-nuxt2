@@ -92,7 +92,7 @@
         <div v-if="otherLink.pageInfo.totalCnt != 0" class="online-insurance__container">
           <div class="title">
             <h2 class="marker-under">{{ otherLink.list[0].contents_type_ext_col_01 }}</h2>
-            <div class="btn--more pc-only"><a href="https://www.tavigator.co.jp/insurance/policy.html">{{ otherLink.list[0].contents_type_ext_col_02 }}</a></div>
+            <div class="btn--more pc-only"><a :href="otherLink.list[0].contents_type_ext_col_03">{{ otherLink.list[0].contents_type_ext_col_02 }}</a></div>
           </div>
           <ul>
             <li v-for="(link, index) in otherLink.list" :key="index">
