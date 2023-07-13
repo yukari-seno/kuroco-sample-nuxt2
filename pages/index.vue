@@ -30,7 +30,8 @@
             >
             <li v-for="(slide, index) in topBanner.list" :key="index" :class="{ active: page === index }">
               <a :href="slide.url" :target="slide.transitionDev.key === '1' ? '_self' : '_blank'">
-                <img class="slide-image" :alt="slide.img.desc" :src="slide.img.url">
+                <img class="slide-image pc-only" :alt="slide.img.desc" :src="slide.img.url">
+                <img class="slide-image sp-only" :alt="slide.img_SP.desc" :src="slide.img_SP.url">
               </a>
             </li>
             <template #back-arrow>
