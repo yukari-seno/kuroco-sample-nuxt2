@@ -37,7 +37,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Generate
-        run: npm run generate
+        run: npm run generate --fail-on-error
         # - name: Zip artifact for upload
         #  run: cd dist && zip ../dist.zip . -r
       - name: Archive Production Artifact
@@ -75,7 +75,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Generate
-        run: npm run generate
+        run: npm run generate --fail-on-error
         # - name: Zip artifact for upload
         #  run: cd dist && zip ../dist.zip . -r
       - name: Archive Production Artifact
@@ -90,3 +90,6 @@ jobs:
           webhook_url: "https://mex-dev.g.kuroco.app/direct/menu/github/"
           webhook_secret: "2b19e71337f953b5658f7ea726524879"
           data: '{"single_zip":"0","domain":"mex-dev.g.kuroco-front.app", "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
+      - name: Error
+        continue-on-error: true
+        run: redirect(process.env.ERROR_URL)
