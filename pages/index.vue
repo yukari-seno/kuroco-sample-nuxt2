@@ -154,7 +154,7 @@ export default {
               return data
             }).catch((err) => {
               console.log(err.message)
-              redirect(process.env.ERROR_URL)
+              throw new Error('API Error')
             })
           }
           cnt++
@@ -178,27 +178,27 @@ export default {
         return area.data
       }).catch((err) => {
         console.log(err)
-        redirect(process.env.ERROR_URL)
+        throw new Error('API Error')
       }),
 
       $axios.onError((err) => {
         // axiosの通信でエラーが発生した時にエラーページにリダイレクト
         console.log(err)
-        redirect(process.env.ERROR_URL)
+        throw new Error('API Error')
       })
     ])
     // トップバナー、テーマ・目的別、観光ガイド、その他リンクが0件の場合、エラーぺージへ
     if (topBanner.pageInfo.totalCnt === 0 || theme.pageInfo.totalCnt === 0 ||
     sightseeing.pageInfo.totalCnt === 0 || otherLink.pageInfo.totalCnt === 0) {
-      redirect(process.env.ERROR_URL)
+      throw new Error('API Error')
     }
     // 都道府県から探す0件の場合、エラー
     if (!prefecture[prefectureTabMax]) {
-      redirect(process.env.ERROR_URL)
+      throw new Error('API Error')
     }
     // フッターリンク0件の場合、エラー
     if (!footerLink[footerLinkMax]) {
-      redirect(process.env.ERROR_URL)
+      throw new Error('API Error')
     }
     return { topBanner, theme, sightseeing, advertisement, coupon, prefecture, otherLink, footerLink, area }
   },
@@ -210,25 +210,57 @@ export default {
       pref_show: 'hokkaido-tohoku'
     }
   },
-  head: {
-    script: [
-      {
-        src: '/js/custom/top.js',
-        defer: true
-      },
-      {
-        src: '/js/custom/search-area.js',
-        defer: true
-      },
-      {
-        src: '/js/custom/search-checkin-out.js',
-        defer: true
-      },
-      {
-        src: '/js/custom/search-tags.js',
-        defer: true
-      }
-    ]
+  computed: {
+    currentPageForCanonical() {
+      return this.$route.path.slice(1)
+    }
+  },
+  head() {
+    return {
+      script: [
+        {
+          src: '/js/custom/top.js',
+          defer: true
+        },
+        {
+          src: '/js/custom/search-area.js',
+          defer: true
+        },
+        {
+          src: '/js/custom/search-checkin-out.js',
+          defer: true
+        },
+        {
+          src: '/js/custom/search-tags.js',
+          defer: true
+        }
+      ],
+      title: 'ホテル・旅館の宿泊予約はたびゲーター',
+      h1: 'ホテル・旅館の宿泊予約はたびゲーター',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'ホテル・旅館の宿泊予約をするならたびゲーター。全国のホテル・旅館をご希望の日程や条件でお探しいただけます。厳選ホテル・旅館で使える、たびゲーター限定割引クーポンも配布中。割引クーポンを使って、お得に宿泊できます。宿泊予約にぜひ、たびゲーターをご利用ください。'
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'ホテル・旅館の宿泊予約はたびゲーター'
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'ホテル・旅館の宿泊予約をするならたびゲーター。全国のホテル・旅館をご希望の日程や条件でお探しいただけます。厳選ホテル・旅館で使える、たびゲーター限定割引クーポンも配布中。割引クーポンを使って、お得に宿泊できます。宿泊予約にぜひ、たびゲーターをご利用ください。'
+        }
+      ],
+      link: [
+        {
+          rel: 'canonical',
+          href: `${process.env.BASE_URL}${this.currentPageForCanonical}`
+        }
+      ]
+    }
   },
   methods: {
     prefClick(num) {
