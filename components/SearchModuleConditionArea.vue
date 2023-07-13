@@ -1,20 +1,20 @@
 <template>
   <div class="srh-param__col srh-param__col--area">
     <label for="srh-param-area" class="form-label">
-      エリア<span class="required">必須</span>
+      都道府県・エリア<span class="required">必須</span>
     </label>
     <input
       id="srh-param-area"
       type="text"
       class="form-control ignore form-input form-input--select form-input--area fomr-error"
-      placeholder="エリアを選択"
+      placeholder="都道府県・エリアを選択"
       required
       readonly="readonly"
       data-panel-toggle="srh-area"
       :value="areaName"
     >
     <div id="area_error" class="form-error-mess none">
-      ※ エリアを選択してください。
+      ※ 都道府県・エリアを選択してください。
     </div>
     <div class="panel panel--srh-area" data-panel="srh-area">
       <div class="panel-wrap">
@@ -144,6 +144,13 @@ export default {
         }
       })
     }
+
+    window.addEventListener('pageshow', function (event) {
+      if (event.persisted) {
+        // bfcache発動時の処理
+        window.location.reload()
+      }
+    })
   }
 }
 </script>

@@ -2196,7 +2196,7 @@ body.listview select.form-charge,
     input.form-input--select.form-input--area,
     input.form-input--select.form-input--calendar {
         background-position: calc(100% - 1.8rem) center, 0.8rem 50%;
-        background-size: 0.9rem 0.521rem, 1.6rem 1.6rem;
+        background-size: 0.9rem 0.521rem, 1.28rem 1.6rem;
     }
     .form-calrange__split {
         width: 3.0rem;
