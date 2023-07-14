@@ -204,11 +204,12 @@ export default {
       prefecture.forEach((area, areaIndex) => {
         area.list.forEach((pref, prefIndex) => {
           if (prefNo.includes(pref.code.key)) {
-            prefecture[areaIndex].list.splice(prefIndex, 1)
+            delete prefecture[areaIndex].list[prefIndex]
           } else {
             prefNo.push(pref.code.key)
           }
         })
+        prefecture[areaIndex].list = prefecture[areaIndex].list.filter(Boolean)
       })
     }
     // フッターリンク0件の場合、エラー
