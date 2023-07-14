@@ -9,8 +9,8 @@
   "basic":[],
   "ip_restrictions":[],
   "error_page": {
-    "status404":"/error.vue",
-    "status401":"/error.vue",
-    "status_ip_503":"/error.vue"
+    "status404":"https://www.tavigator.co.jp/404",
+    "status401":"https://www.tavigator.co.jp/404",
+    "status_ip_503":"https://www.tavigator.co.jp/404"
   }
 }

@@ -129,7 +129,7 @@ export default {
     SearchModule,
     Carousels
   },
-  async asyncData ({ $axios, $KUROCO_API_URL, $TVG_URL, redirect }) {
+  async asyncData ({ $axios, $KUROCO_API_URL, $TVG_URL }) {
     // 都道府県から探すタブ数(0始まり)
     const prefectureTabMax = 9
     // フッターリンクカテゴリー数(0始まり)
