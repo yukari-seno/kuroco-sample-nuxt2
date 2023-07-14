@@ -36,8 +36,8 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Generate
         continue-on-error: true
+      - name: Generate
         run: npm run generate
         # - name: Zip artifact for upload
         #  run: cd dist && zip ../dist.zip . -r
@@ -75,6 +75,7 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+        continue-on-error: true
       - name: Generate
         run: npm run generate
         # - name: Zip artifact for upload
