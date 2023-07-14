@@ -129,7 +129,7 @@ export default {
     SearchModule,
     Carousels
   },
-  async asyncData ({ $axios, $KUROCO_API_URL, $TVG_URL, redirect }) {
+  async asyncData ({ $axios, $KUROCO_API_URL, $TVG_URL }) {
     // 都道府県から探すタブ数(0始まり)
     const prefectureTabMax = 9
     // フッターリンクカテゴリー数(0始まり)
@@ -198,6 +198,19 @@ export default {
     // 都道府県から探す0件の場合、エラー
     if (!prefecture[prefectureTabMax]) {
       throw new Error('API Error')
+    } else {
+      // 同一都道府県コードが登録されている場合、二つ目以降を配列から削除
+      const prefNo = []
+      prefecture.forEach((area, areaIndex) => {
+        area.list.forEach((pref, prefIndex) => {
+          if (prefNo.includes(pref.code.key)) {
+            delete prefecture[areaIndex].list[prefIndex]
+          } else {
+            prefNo.push(pref.code.key)
+          }
+        })
+        prefecture[areaIndex].list = prefecture[areaIndex].list.filter(Boolean)
+      })
     }
     // フッターリンク0件の場合、エラー
     if (!footerLink[footerLinkMax]) {

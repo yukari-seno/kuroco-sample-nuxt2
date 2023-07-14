@@ -2,7 +2,7 @@ name: Build scheduled-build
 on:
   schedule:
     # 2週間に1回実行する
-    - cron: '0 0 */14 * *'
+    - cron: '0 0 */2 * *'
 
 jobs:
   pushed_build:
