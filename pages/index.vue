@@ -198,6 +198,18 @@ export default {
     // 都道府県から探す0件の場合、エラー
     if (!prefecture[prefectureTabMax]) {
       throw new Error('API Error')
+    } else {
+      // 同一都道府県コードが登録されている場合、二つ目以降を配列から削除
+      const prefNo = []
+      prefecture.forEach((area, areaIndex) => {
+        area.list.forEach((pref, prefIndex) => {
+          if (prefNo.includes(pref.code.key)) {
+            prefecture[areaIndex].list.splice(prefIndex, 1)
+          } else {
+            prefNo.push(pref.code.key)
+          }
+        })
+      })
     }
     // フッターリンク0件の場合、エラー
     if (!footerLink[footerLinkMax]) {
